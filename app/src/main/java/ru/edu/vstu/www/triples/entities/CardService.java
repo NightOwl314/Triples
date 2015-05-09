@@ -3,13 +3,13 @@ package ru.edu.vstu.www.triples.entities;
 import java.util.Random;
 
 public class CardService {
+    Random rand = new Random();
 
     /**
      * @return случайный цвет элементов на карте
      */
-    public static CardColor getRandomColor() {
+    public CardColor getRandomColor() {
         CardColor color = CardColor.RED;
-        Random rand = new Random();
         int i = rand.nextInt(100);
         switch (i % 3) {
             case 0:
@@ -28,9 +28,8 @@ public class CardService {
     /**
      * @return случайное количество элементов на карте
      */
-    public static CardNumber getRandomNumber() {
+    public CardNumber getRandomNumber() {
         CardNumber number = CardNumber.ONE;
-        Random rand = new Random();
         int i = rand.nextInt(100);
         switch (i % 3) {
             case 0:
@@ -49,9 +48,8 @@ public class CardService {
     /**
      * @return случайная форма элементов на карте
      */
-    public static CardForm getRandomForm() {
+    public CardForm getRandomForm() {
         CardForm form = CardForm.CIRCLE;
-        Random rand = new Random();
         int i = rand.nextInt(100);
         switch (i % 3) {
             case 0:
@@ -70,9 +68,8 @@ public class CardService {
     /**
      * @return случайное заполнение элементов на карте
      */
-    public static CardFilling getRandomFilling() {
+    public CardFilling getRandomFilling() {
         CardFilling filling = CardFilling.FILLED;
-        Random rand = new Random();
         int i = rand.nextInt(100);
         switch (i % 3) {
             case 0:
@@ -91,7 +88,7 @@ public class CardService {
     /**
      * @return новая карта с рамдомными характеристиками
      */
-    public static Card getRandomCard() {
+    public Card getRandomCard() {
         return new Card(getRandomColor(), getRandomNumber(), getRandomForm(), getRandomFilling());
     }
 
@@ -103,7 +100,7 @@ public class CardService {
      * @param c3 цвет третьей карты тройки
      * @return правильно/ не правильно (true/false)
      */
-    public static boolean isRightColors(CardColor c1, CardColor c2, CardColor c3) {
+    public boolean isRightColors(CardColor c1, CardColor c2, CardColor c3) {
         //c1 == c2 && c2 == c3 --> c1 == c3 указание всех трех - избыточное условие
         return c1 == c2 && c2 == c3 || c1 != c2 && c2 != c3 && c1 != c3;
     }
@@ -116,7 +113,7 @@ public class CardService {
      * @param n3 номер третьей карты тройки
      * @return правильно/ не правильно (true/false)
      */
-    public static boolean isRightNumber(CardNumber n1, CardNumber n2, CardNumber n3) {
+    public boolean isRightNumber(CardNumber n1, CardNumber n2, CardNumber n3) {
         return n1 == n2 && n2 == n3 || n1 != n2 && n2 != n3 && n1 != n3;
     }
 
@@ -128,7 +125,7 @@ public class CardService {
      * @param f3 форма третьей карты тройки
      * @return правильно/ не правильно (true/false)
      */
-    public static boolean isRightForm(CardForm f1, CardForm f2, CardForm f3) {
+    public boolean isRightForm(CardForm f1, CardForm f2, CardForm f3) {
         return f1 == f2 && f2 == f3 || f1 != f2 && f2 != f3 && f1 != f3;
     }
 
@@ -140,7 +137,7 @@ public class CardService {
      * @param f3 заполнение третьей карты тройки
      * @return правильно/ не правильно (true/false)
      */
-    public static boolean isRightFilling(CardFilling f1, CardFilling f2, CardFilling f3) {
+    public boolean isRightFilling(CardFilling f1, CardFilling f2, CardFilling f3) {
         return f1 == f2 && f2 == f3 || f1 != f2 && f2 != f3 && f1 != f3;
     }
 
@@ -152,7 +149,7 @@ public class CardService {
      * @param card3 третья карта
      * @return правильно/ не правильно (true/false)
      */
-    public static boolean isTriple(Card card1, Card card2, Card card3) {
+    public boolean isTriple(Card card1, Card card2, Card card3) {
         return isRightColors(card1.getColor(), card2.getColor(), card3.getColor()) &&
                 isRightNumber(card1.getNumber(), card2.getNumber(), card3.getNumber()) &&
                 isRightForm(card1.getForm(), card2.getForm(), card3.getForm()) &&

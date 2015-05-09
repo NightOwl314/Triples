@@ -5,4 +5,18 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <!--Список кнопок в главном меню-->
+    <style name="listBtnsMainMenu">
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">300dp</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_centerInParent">true</item>
+        <!--<item name="android:layout_marginTop">100dp</item>-->
+    </style>
+
+    <!--Стиль кнопок главного меню-->
+    <style name="btnMainMenu">
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 </resources>
