@@ -39,4 +39,18 @@ public class Card {
     public String getPicture() {
         return picture;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null) {
+            return false;
+        } else if (!(o instanceof Card)) {
+            return false;
+        }
+        Card card = (Card) o;
+        return this.color == card.getColor() &&
+                this.number == card.getNumber() &&
+                this.form == card.getForm() &&
+                this.filling == card.getFilling();
+    }
 }

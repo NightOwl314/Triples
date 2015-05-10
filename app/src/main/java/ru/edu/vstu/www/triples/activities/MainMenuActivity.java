@@ -15,14 +15,6 @@ import ru.edu.vstu.www.triples.entities.Constants;
 
 public class MainMenuActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button playBtn;
-    private Button rulesBtn;
-    private Button settingsBtn;
-    private Button recordBtn;
-    private Button storeBtn;
-    private Button exitBtn;
-    private Button infoBtn;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,13 +22,13 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_main_menu);
 
         Log.d(Constants.LOG_TAG, "MainMenuActivity: Находим пункты главного меню");
-        playBtn = (Button) findViewById(R.id.playBtn);
-        rulesBtn = (Button) findViewById(R.id.rulesBtn);
-        settingsBtn = (Button) findViewById(R.id.settingsBtn);
-        recordBtn = (Button) findViewById(R.id.recordBtn);
-        storeBtn = (Button) findViewById(R.id.storeBtn);
-        exitBtn = (Button) findViewById(R.id.exitBtn);
-        infoBtn = (Button) findViewById(R.id.infoBtn);
+        Button playBtn = (Button) findViewById(R.id.playBtn);
+        Button rulesBtn = (Button) findViewById(R.id.rulesBtn);
+        Button settingsBtn = (Button) findViewById(R.id.settingsBtn);
+        Button recordBtn = (Button) findViewById(R.id.recordBtn);
+        Button storeBtn = (Button) findViewById(R.id.storeBtn);
+        Button exitBtn = (Button) findViewById(R.id.exitBtn);
+        Button infoBtn = (Button) findViewById(R.id.infoBtn);
 
         playBtn.setOnClickListener(this);
         rulesBtn.setOnClickListener(this);

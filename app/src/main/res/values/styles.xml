@@ -11,12 +11,24 @@
         <item name="android:layout_height">300dp</item>
         <item name="android:orientation">vertical</item>
         <item name="android:layout_centerInParent">true</item>
-        <!--<item name="android:layout_marginTop">100dp</item>-->
     </style>
 
     <!--Стиль кнопок главного меню-->
     <style name="btnMainMenu">
         <item name="android:layout_width">200dp</item>
         <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <!--Стиль для каждой карты-->
+    <style name="cardGame">
+        <item name="android:layout_width">110dp</item>
+        <item name="android:layout_height">90dp</item>
+        <item name="android:layout_margin">3dp</item>
+    </style>
+
+    <!--Стиль строк для игрового поля-->
+    <style name="rowCardsGame">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
     </style>
 </resources>
