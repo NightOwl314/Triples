@@ -4,9 +4,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
 import ru.edu.vstu.www.triples.R;
 import ru.edu.vstu.www.triples.entities.Constants;
@@ -19,6 +19,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     private GameField field;
 
+    private RelativeLayout gameLayout;
     private Button menuBtn;
     private Button rulesBtn;
     private Button settingsBtn;
@@ -51,26 +52,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        Log.d(Constants.LOG_TAG, "GameActivity: onCreateOptionsMenu()");
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_game, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        Log.d(Constants.LOG_TAG, "GameActivity: onOptionsItemSelected()");
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+        return false;
     }
 
     @Override
@@ -190,6 +172,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     private void findViewElements() {
         Log.d(Constants.LOG_TAG, "GameActivity: Находим кнопки меню и игрового поля");
+        gameLayout = (RelativeLayout) findViewById(R.id.gameLayout);
         menuBtn = (Button) findViewById(R.id.menuGameBtn);
         rulesBtn = (Button) findViewById(R.id.rulesGameBtn);
         settingsBtn = (Button) findViewById(R.id.settingsGameBtn);
@@ -231,5 +214,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     private void fillGameField() {
         Log.d(Constants.LOG_TAG, "GameActivity: Заполняем карты");
+        gameLayout.setBackgroundResource(R.drawable.font_green);
     }
 }

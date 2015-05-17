@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -27,7 +26,6 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
         Button settingsBtn = (Button) findViewById(R.id.settingsBtn);
         Button recordBtn = (Button) findViewById(R.id.recordBtn);
         Button storeBtn = (Button) findViewById(R.id.storeBtn);
-        Button exitBtn = (Button) findViewById(R.id.exitBtn);
         Button infoBtn = (Button) findViewById(R.id.infoBtn);
 
         playBtn.setOnClickListener(this);
@@ -35,32 +33,12 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
         settingsBtn.setOnClickListener(this);
         recordBtn.setOnClickListener(this);
         storeBtn.setOnClickListener(this);
-        exitBtn.setOnClickListener(this);
         infoBtn.setOnClickListener(this);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        Log.d(Constants.LOG_TAG, "MainMenuActivity: onCreateOptionsMenu()");
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        Log.d(Constants.LOG_TAG, "MainMenuActivity: onOptionsItemSelected()");
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+        return false;
     }
 
     @Override
@@ -92,9 +70,6 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
                 Log.d(Constants.LOG_TAG, "MainMenuActivity: Нажата кнопка Магазин");
                 intent = new Intent(this, StoreActivity.class);
                 startActivity(intent);
-                break;
-            case R.id.exitBtn:
-                Log.d(Constants.LOG_TAG, "MainMenuActivity: Нажата кнопка Выход");
                 break;
             case R.id.infoBtn:
                 Log.d(Constants.LOG_TAG, "MainMenuActivity: Нажата кнопка Инфо");

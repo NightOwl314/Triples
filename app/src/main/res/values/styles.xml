@@ -1,36 +1,34 @@
 <resources>
-
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
     </style>
 
     <!--Список кнопок в главном меню-->
     <style name="listBtnsMainMenu">
-        <item name="android:layout_width">200dp</item>
-        <item name="android:layout_height">300dp</item>
+        <item name="android:layout_width">520dp</item>
+        <item name="android:layout_height">600dp</item>
         <item name="android:orientation">vertical</item>
         <item name="android:layout_centerInParent">true</item>
     </style>
 
     <!--Стиль кнопок главного меню-->
     <style name="btnMainMenu">
-        <item name="android:layout_width">200dp</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">500dp</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:layout_margin">10dp</item>
     </style>
 
     <!--Стиль для каждой карты-->
     <style name="cardGame">
-        <item name="android:layout_width">110dp</item>
-        <item name="android:layout_height">90dp</item>
-        <item name="android:layout_margin">4dp</item>
+        <item name="android:layout_width">180dp</item>
+        <item name="android:layout_height">150dp</item>
+        <item name="android:layout_margin">7dp</item>
         <item name="android:layout_centerInParent">true</item>
     </style>
 
     <!--Стиль строк для игрового поля-->
     <style name="rowCardsGame">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">750dp</item>
+        <item name="android:layout_height">150dp</item>
         <item name="android:layout_centerHorizontal">true</item>
     </style>
 </resources>
