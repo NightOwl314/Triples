@@ -1,9 +1,18 @@
 <resources>
     <string name="app_name">Triples</string>
-    <string name="title_activity_rules">RulesActivity</string>
-    <string name="title_activity_game">GameActivity</string>
-    <string name="title_activity_info">InfoActivity</string>
-    <string name="title_activity_store">StoreActivity</string>
-    <string name="title_activity_settings">SettingsActivity</string>
-    <string name="title_activity_records">RecordsActivity</string>
+    <string name="score_zero">0</string>
+    <string name="rulesTitle">Правила</string>
+    <string name="settingsTitle">Настройки</string>
+    <string name="storeTitle">Магазин</string>
+    <string name="rules">В игре необходимо находить правильные наборы из трёх карт - тройки. Каждая карта имеет четыре признака:
+        количество фигур (одна, две, три);
+        тип символов (круг, треугольник, ромб);
+        цвет (красный, синий, желтый);
+        заполнение (пустое, захтрихованное, закрашенное).
+        Каждая из 81 карты уникальна. Тройка состоит из трёх карт, у которых каждый из признаков, рассмотренных по отдельности,
+        либо полностью совпадают, либо полностью различаются на всех трёх картах. Все признаки должны полностью соответствовать этому правилу.
+
+        Таким образом, количество фигур должно быть или одинаковым на всех трёх картах, или разными на всех трёх картах,
+        цвет должен быть или одинаковым на всех трёх картах, или разными на всех трёх картах, и так далее…
+    </string>
 </resources>

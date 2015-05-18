@@ -1,35 +1,43 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    xmlns:tools="http://schemas.android.com/tools"
     tools:context="ru.edu.vstu.www.triples.activities.GameActivity"
-    android:id="@+id/gameLayout">
+    style="@style/activityStyle"
+    android:id="@+id/gameLayout"
+    android:background="@drawable/font_rainbow">
 
     <LinearLayout
         android:id="@+id/lineMenu"
         android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="50dp">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Menu"
-            android:id="@+id/menuGameBtn" />
+        android:layout_width="750dp"
+        android:layout_height="55dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rules"
-            android:id="@+id/rulesGameBtn" />
+        <Button style="@style/menuButtonGameStyle"
+            android:id="@+id/menuGameBtn"
+            android:background="@drawable/mbtn_menu"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Settings"
-            android:id="@+id/settingsGameBtn" />
+        <Button style="@style/menuButtonGameStyle"
+            android:id="@+id/rulesGameBtn"
+            android:background="@drawable/mbtn_rules"/>
+
+        <Button style="@style/menuButtonGameStyle"
+            android:id="@+id/settingsGameBtn"
+            android:background="@drawable/mbtn_settings"/>
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            android:background="@color/white"
+            android:textColor="@color/green"
+            android:textSize="46sp"
+            android:text="@string/score_zero"
+            android:id="@+id/score"
+            android:gravity="center"
+            android:layout_marginLeft="150dp"/>
+
+
     </LinearLayout>
 
     <TableLayout
@@ -38,68 +46,68 @@
         android:layout_height="1000dp"
         android:layout_centerInParent="true">
 
-        <TableRow style="@style/rowCardsGame"
+        <TableRow style="@style/rowCardsGameStyle"
             android:id="@+id/line0">
 
-            <Button style="@style/cardGame"
+            <Button style="@style/cardGameStyle"
                 android:id="@+id/card00" />
 
-            <Button style="@style/cardGame"
+            <Button style="@style/cardGameStyle"
                 android:id="@+id/card01" />
 
-            <Button style="@style/cardGame"
+            <Button style="@style/cardGameStyle"
                 android:id="@+id/card02" />
         </TableRow>
 
-        <TableRow style="@style/rowCardsGame"
+        <TableRow style="@style/rowCardsGameStyle"
             android:id="@+id/line1">
 
-            <Button style="@style/cardGame"
+            <Button style="@style/cardGameStyle"
                 android:id="@+id/card10" />
 
-            <Button style="@style/cardGame"
+            <Button style="@style/cardGameStyle"
                 android:id="@+id/card11" />
 
-            <Button style="@style/cardGame"
+            <Button style="@style/cardGameStyle"
                 android:id="@+id/card12" />
         </TableRow>
 
-        <TableRow style="@style/rowCardsGame"
+        <TableRow style="@style/rowCardsGameStyle"
             android:id="@+id/line2">
 
-            <Button style="@style/cardGame"
+            <Button style="@style/cardGameStyle"
                 android:id="@+id/card20" />
 
-            <Button style="@style/cardGame"
+            <Button style="@style/cardGameStyle"
                 android:id="@+id/card21" />
 
-            <Button style="@style/cardGame"
+            <Button style="@style/cardGameStyle"
                 android:id="@+id/card22" />
         </TableRow>
 
-        <TableRow style="@style/rowCardsGame"
+        <TableRow style="@style/rowCardsGameStyle"
             android:id="@+id/line3">
 
-            <Button style="@style/cardGame"
+            <Button style="@style/cardGameStyle"
                 android:id="@+id/card30" />
 
-            <Button style="@style/cardGame"
+            <Button style="@style/cardGameStyle"
                 android:id="@+id/card31" />
 
-            <Button style="@style/cardGame"
+            <Button style="@style/cardGameStyle"
                 android:id="@+id/card32" />
         </TableRow>
 
-        <TableRow style="@style/rowCardsGame"
+        <TableRow style="@style/rowCardsGameStyle"
             android:id="@+id/line4">
 
-            <Button style="@style/cardGame"
+            <Button style="@style/cardGameStyle"
                 android:id="@+id/card40"/>
 
-            <Button style="@style/cardGame"
+            <Button style="@style/cardGameStyle"
                 android:id="@+id/card41" />
 
-            <Button style="@style/cardGame"
+            <Button style="@style/cardGameStyle"
                 android:id="@+id/card42" />
         </TableRow>
 

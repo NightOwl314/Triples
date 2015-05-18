@@ -20,37 +20,31 @@
         </activity>
         <activity
             android:name=".activities.RulesActivity"
-            android:label="@string/title_activity_rules"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar">
         </activity>
         <activity
             android:name=".activities.GameActivity"
-            android:label="@string/title_activity_game"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar">
         </activity>
         <activity
             android:name=".activities.InfoActivity"
-            android:label="@string/title_activity_info"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar">
         </activity>
         <activity
             android:name=".activities.StoreActivity"
-            android:label="@string/title_activity_store"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar">
         </activity>
         <activity
             android:name=".activities.SettingsActivity"
-            android:label="@string/title_activity_settings"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar">
         </activity>
         <activity
             android:name=".activities.RecordsActivity"
-            android:label="@string/title_activity_records"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar">
         </activity>

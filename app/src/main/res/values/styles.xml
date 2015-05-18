@@ -2,23 +2,22 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
     </style>
 
-    <!--Список кнопок в главном меню-->
-    <style name="listBtnsMainMenu">
-        <item name="android:layout_width">520dp</item>
-        <item name="android:layout_height">600dp</item>
-        <item name="android:orientation">vertical</item>
-        <item name="android:layout_centerInParent">true</item>
+    <style name="activityStyle">
+        <item name="android:background">@drawable/font_green</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:padding">10dp</item>
     </style>
 
     <!--Стиль кнопок главного меню-->
-    <style name="btnMainMenu">
+    <style name="btnMainMenuStyle">
         <item name="android:layout_width">500dp</item>
         <item name="android:layout_height">100dp</item>
         <item name="android:layout_margin">10dp</item>
     </style>
 
     <!--Стиль для каждой карты-->
-    <style name="cardGame">
+    <style name="cardGameStyle">
         <item name="android:layout_width">180dp</item>
         <item name="android:layout_height">150dp</item>
         <item name="android:layout_margin">7dp</item>
@@ -26,9 +25,33 @@
     </style>
 
     <!--Стиль строк для игрового поля-->
-    <style name="rowCardsGame">
+    <style name="rowCardsGameStyle">
         <item name="android:layout_width">750dp</item>
         <item name="android:layout_height">150dp</item>
         <item name="android:layout_centerHorizontal">true</item>
     </style>
+
+    <!--Стиль кнопок меню на игровом поле-->
+    <style name="menuButtonGameStyle">
+        <item name="android:layout_width">55dp</item>
+        <item name="android:layout_height">55dp</item>
+        <item name="android:layout_marginRight">25dp</item>
+    </style>
+
+    <!--стиль для кнопок переходов активити-->
+    <style name="btnActivityStyle">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_alignParentBottom">true</item>
+    </style>
+
+    <!--Стиль заголовков Активити-->
+    <style name="titleStyle">
+        <item name="android:textColor">@color/dark_green</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_margin">15dp</item>
+    </style>
+
 </resources>
