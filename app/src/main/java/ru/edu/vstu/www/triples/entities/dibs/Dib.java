@@ -1,4 +1,4 @@
-package ru.edu.vstu.www.triples.entities;
+package ru.edu.vstu.www.triples.entities.dibs;
 
 public class Dib {
     private final DibColor color;           //цвет фигур на фишке
@@ -6,7 +6,7 @@ public class Dib {
     private final DibForm form;             //форма фигур
     private final DibFilling filling;       //заполнение фигур
 
-    private final String picture;            //название изображения
+    private final String picture;            //название изображения: цвет+количество+форма+заполнение
 
     public Dib(DibColor color, DibNumber number, DibForm form, DibFilling filling) {
         this.color = color;

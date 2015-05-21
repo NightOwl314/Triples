@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 
 import ru.edu.vstu.www.triples.R;
 import ru.edu.vstu.www.triples.entities.Constants;
@@ -15,11 +14,10 @@ import ru.edu.vstu.www.triples.entities.GameFieldService;
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private GameFieldService fieldService = new GameFieldService();
+    private GameFieldService fs = new GameFieldService();
 
     private GameField field;
 
-    private RelativeLayout gameLayout;
     private Button menuBtn;
     private Button rulesBtn;
     private Button settingsBtn;
@@ -46,7 +44,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         Log.d(Constants.LOG_TAG, "GameActivity: onCreate()");
         setContentView(R.layout.activity_game);
         findViewElements();
-        field = fieldService.generateNewGameField();
+        field = fs.generateNewGameField();
         fillGameField();
     }
 
@@ -180,7 +178,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     private void findViewElements() {
         Log.d(Constants.LOG_TAG, "GameActivity: Находим кнопки меню и игрового поля");
-        gameLayout = (RelativeLayout) findViewById(R.id.gameLayout);
         menuBtn = (Button) findViewById(R.id.menuGameBtn);
         rulesBtn = (Button) findViewById(R.id.rulesGameBtn);
         settingsBtn = (Button) findViewById(R.id.settingsGameBtn);
@@ -222,5 +219,20 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     private void fillGameField() {
         Log.d(Constants.LOG_TAG, "GameActivity: Заполняем фишки");
+        dib00.setBackgroundResource(fs.getBackgroundForDib(field.getDib(0,0).getPicture()));
+        dib01.setBackgroundResource(fs.getBackgroundForDib(field.getDib(0,1).getPicture()));
+        dib02.setBackgroundResource(fs.getBackgroundForDib(field.getDib(0,2).getPicture()));
+        dib10.setBackgroundResource(fs.getBackgroundForDib(field.getDib(1,0).getPicture()));
+        dib11.setBackgroundResource(fs.getBackgroundForDib(field.getDib(1,1).getPicture()));
+        dib12.setBackgroundResource(fs.getBackgroundForDib(field.getDib(1,2).getPicture()));
+        dib20.setBackgroundResource(fs.getBackgroundForDib(field.getDib(2,0).getPicture()));
+        dib21.setBackgroundResource(fs.getBackgroundForDib(field.getDib(2,1).getPicture()));
+        dib22.setBackgroundResource(fs.getBackgroundForDib(field.getDib(2,2).getPicture()));
+        dib30.setBackgroundResource(fs.getBackgroundForDib(field.getDib(3,0).getPicture()));
+        dib31.setBackgroundResource(fs.getBackgroundForDib(field.getDib(3,1).getPicture()));
+        dib32.setBackgroundResource(fs.getBackgroundForDib(field.getDib(3,2).getPicture()));
+        dib40.setBackgroundResource(fs.getBackgroundForDib(field.getDib(4,0).getPicture()));
+        dib41.setBackgroundResource(fs.getBackgroundForDib(field.getDib(4,1).getPicture()));
+        dib42.setBackgroundResource(fs.getBackgroundForDib(field.getDib(4,2).getPicture()));
     }
 }

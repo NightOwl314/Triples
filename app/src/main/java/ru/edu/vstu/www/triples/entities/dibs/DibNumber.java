@@ -1,4 +1,4 @@
-package ru.edu.vstu.www.triples.entities;
+package ru.edu.vstu.www.triples.entities.dibs;
 
 public enum DibNumber {
     ONE("1"),   //одна фигура

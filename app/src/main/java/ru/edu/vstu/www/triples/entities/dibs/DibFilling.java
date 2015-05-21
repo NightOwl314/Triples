@@ -1,8 +1,8 @@
-package ru.edu.vstu.www.triples.entities;
+package ru.edu.vstu.www.triples.entities.dibs;
 
 public enum DibFilling {
     FILLED("f"), //закрашенный
-    SHADED("s"), //захтрихованный
+    SHADED("s"), //заштрихованный
     EMPTY("e");  //пустой
 
     private final String label;

@@ -2,8 +2,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="ru.edu.vstu.www.triples.activities.GameActivity"
-    style="@style/activityStyle"
-    android:id="@+id/gameLayout">
+    style="@style/activityStyle">
 
     <LinearLayout
         android:id="@+id/lineMenu"
@@ -99,13 +98,16 @@
             android:id="@+id/line4">
 
             <Button style="@style/dibGameStyle"
-                android:id="@+id/dib40"/>
+                android:id="@+id/dib40"
+                android:background="@drawable/s_b1cs"/>
 
             <Button style="@style/dibGameStyle"
-                android:id="@+id/dib41" />
+                android:id="@+id/dib41"
+                android:background="@drawable/b1cf"/>
 
             <Button style="@style/dibGameStyle"
-                android:id="@+id/dib42" />
+                android:id="@+id/dib42"
+                android:background="@drawable/s_b1cf"/>
         </TableRow>
 
     </TableLayout>

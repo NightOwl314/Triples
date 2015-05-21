@@ -1,7 +1,13 @@
 package ru.edu.vstu.www.triples.entities;
 
+import ru.edu.vstu.www.triples.entities.dibs.Dib;
+
 public class GameField {
-    private Dib[][] array = new Dib[Constants.ROW_COUNT][Constants.COLUMN_COUNT];
+    private Dib[][] array;
+
+    public GameField() {
+        array = new Dib[Constants.ROW_COUNT][Constants.COLUMN_COUNT];
+    }
 
     /**
      * @return Массив из фишек игрового поля

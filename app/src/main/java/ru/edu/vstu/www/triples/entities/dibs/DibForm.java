@@ -1,13 +1,13 @@
-package ru.edu.vstu.www.triples.entities;
+package ru.edu.vstu.www.triples.entities.dibs;
 
-public enum DibColor {
-    RED("r"),    //красный
-    BLUE("b"),   //синий
-    YELLOW("y"); //желтый
+public enum DibForm {
+    CIRCLE("c"),   //круг
+    TRIANGLE("t"), //треугольник
+    RHOMBUS("r");  //ромб
 
     private final String label;
 
-    private DibColor(String label) {
+    private DibForm(String label) {
         this.label = label;
     }
 
