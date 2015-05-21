@@ -2,7 +2,7 @@ package ru.edu.vstu.www.triples.entities;
 
 public class GameFieldService {
 
-    private CardService cardService = new CardService();
+    private DibService dibService = new DibService();
 
     /**
      * Генерируем новое игровое поле
@@ -10,15 +10,15 @@ public class GameFieldService {
      */
     public GameField generateNewGameField() {
         GameField field = new GameField();
-        Card[][] array = field.getArray();
+        Dib[][] array = field.getArray();
         int len = 0;
         for (int i = 0; i < Constants.ROW_COUNT; i++) {
             for (int j = 0; j < Constants.COLUMN_COUNT; j++) {
                 boolean add = false;
                 do {
-                    Card card = cardService.getRandomCard();
-                    if(!containArrayLengthCard(array, len, card)) {
-                        array[i][j] = card;
+                    Dib dib = dibService.getRandomDib();
+                    if(!containArrayLengthDib(array, len, dib)) {
+                        array[i][j] = dib;
                         len++;
                         add = true;
                     }
@@ -29,20 +29,20 @@ public class GameFieldService {
     }
 
     /**
-     * Содержит ли массив указанной длины данную карту
+     * Содержит ли массив указанной длины данную фишку
      * @param arr массив
      * @param len длина
-     * @param card карта
+     * @param dib фишка
      * @return true, если содержит
      */
-    private boolean containArrayLengthCard(Card[][] arr, int len, Card card) {
+    private boolean containArrayLengthDib(Dib[][] arr, int len, Dib dib) {
         if (len == 0) {
             return false;
         }
 
         int k = 0;
         while (k < len) {
-            if (card.equals(arr[k/3][k%3])) {
+            if (dib.equals(arr[k/3][k%3])) {
                 return true;
             }
             k++;
@@ -52,15 +52,15 @@ public class GameFieldService {
     }
 
     /**
-     * Содержится ли на поле указанная карта
+     * Содержится ли на поле указанная фишка
      * @param arr массив поля
-     * @param card карта
+     * @param dib фишка
      * @return true, если содержится
      */
-    public boolean containArrayCard (Card[][] arr, Card card) {
+    public boolean containArrayDib (Dib[][] arr, Dib dib) {
         for (int i = 0; i < Constants.ROW_COUNT; i++) {
             for (int j = 0; j < Constants.COLUMN_COUNT; j++) {
-                if (card.equals(arr[i][j])) {
+                if (dib.equals(arr[i][j])) {
                     return true;
                 }
             }
@@ -73,30 +73,30 @@ public class GameFieldService {
      * @param arr массив
      * @return true, если содержит
      */
-    public boolean hasArrayOneTriple(Card[][] arr) {
+    public boolean hasArrayOneTriple(Dib[][] arr) {
         int n = 0;
-        while (n < Constants.COUNT_CARDS - 2) {
-            Card c1 = arr[n/3][n%3];
+        while (n < Constants.COUNT_DIBS - 2) {
+            Dib c1 = arr[n/3][n%3];
             if (c1 == null) {
                 n++;
                 continue;
             }
             int m = n + 1;
-            while (m < Constants.COUNT_CARDS - 1) {
-                Card c2 = arr[m/3][m%3];
+            while (m < Constants.COUNT_DIBS - 1) {
+                Dib c2 = arr[m/3][m%3];
                 if (c2 == null) {
                     m++;
                     continue;
                 }
                 int k = m + 1;
-                while (k < Constants.COUNT_CARDS) {
-                    Card c3 = arr[k/3][k%3];
+                while (k < Constants.COUNT_DIBS) {
+                    Dib c3 = arr[k/3][k%3];
                     if (c3 == null) {
                         k++;
                         continue;
                     }
 
-                    if (cardService.isTriple(c1, c2, c3)) {
+                    if (dibService.isTriple(c1, c2, c3)) {
                         return true;
                     }
 

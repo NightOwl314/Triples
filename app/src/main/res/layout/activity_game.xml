@@ -43,69 +43,69 @@
         android:layout_height="1000dp"
         android:layout_centerInParent="true">
 
-        <TableRow style="@style/rowCardsGameStyle"
+        <TableRow style="@style/rowDibsGameStyle"
             android:id="@+id/line0">
 
-            <Button style="@style/cardGameStyle"
-                android:id="@+id/card00" />
+            <Button style="@style/dibGameStyle"
+                android:id="@+id/dib00" />
 
-            <Button style="@style/cardGameStyle"
-                android:id="@+id/card01" />
+            <Button style="@style/dibGameStyle"
+                android:id="@+id/dib01" />
 
-            <Button style="@style/cardGameStyle"
-                android:id="@+id/card02" />
+            <Button style="@style/dibGameStyle"
+                android:id="@+id/dib02" />
         </TableRow>
 
-        <TableRow style="@style/rowCardsGameStyle"
+        <TableRow style="@style/rowDibsGameStyle"
             android:id="@+id/line1">
 
-            <Button style="@style/cardGameStyle"
-                android:id="@+id/card10" />
+            <Button style="@style/dibGameStyle"
+                android:id="@+id/dib10" />
 
-            <Button style="@style/cardGameStyle"
-                android:id="@+id/card11" />
+            <Button style="@style/dibGameStyle"
+                android:id="@+id/dib11" />
 
-            <Button style="@style/cardGameStyle"
-                android:id="@+id/card12" />
+            <Button style="@style/dibGameStyle"
+                android:id="@+id/dib12" />
         </TableRow>
 
-        <TableRow style="@style/rowCardsGameStyle"
+        <TableRow style="@style/rowDibsGameStyle"
             android:id="@+id/line2">
 
-            <Button style="@style/cardGameStyle"
-                android:id="@+id/card20" />
+            <Button style="@style/dibGameStyle"
+                android:id="@+id/dib20" />
 
-            <Button style="@style/cardGameStyle"
-                android:id="@+id/card21" />
+            <Button style="@style/dibGameStyle"
+                android:id="@+id/dib21" />
 
-            <Button style="@style/cardGameStyle"
-                android:id="@+id/card22" />
+            <Button style="@style/dibGameStyle"
+                android:id="@+id/dib22" />
         </TableRow>
 
-        <TableRow style="@style/rowCardsGameStyle"
+        <TableRow style="@style/rowDibsGameStyle"
             android:id="@+id/line3">
 
-            <Button style="@style/cardGameStyle"
-                android:id="@+id/card30" />
+            <Button style="@style/dibGameStyle"
+                android:id="@+id/dib30" />
 
-            <Button style="@style/cardGameStyle"
-                android:id="@+id/card31" />
+            <Button style="@style/dibGameStyle"
+                android:id="@+id/dib31" />
 
-            <Button style="@style/cardGameStyle"
-                android:id="@+id/card32" />
+            <Button style="@style/dibGameStyle"
+                android:id="@+id/dib32" />
         </TableRow>
 
-        <TableRow style="@style/rowCardsGameStyle"
+        <TableRow style="@style/rowDibsGameStyle"
             android:id="@+id/line4">
 
-            <Button style="@style/cardGameStyle"
-                android:id="@+id/card40"/>
+            <Button style="@style/dibGameStyle"
+                android:id="@+id/dib40"/>
 
-            <Button style="@style/cardGameStyle"
-                android:id="@+id/card41" />
+            <Button style="@style/dibGameStyle"
+                android:id="@+id/dib41" />
 
-            <Button style="@style/cardGameStyle"
-                android:id="@+id/card42" />
+            <Button style="@style/dibGameStyle"
+                android:id="@+id/dib42" />
         </TableRow>
 
     </TableLayout>

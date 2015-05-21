@@ -1,39 +1,39 @@
 package ru.edu.vstu.www.triples.entities;
 
 public class GameField {
-    private Card[][] array = new Card[Constants.ROW_COUNT][Constants.COLUMN_COUNT];
+    private Dib[][] array = new Dib[Constants.ROW_COUNT][Constants.COLUMN_COUNT];
 
     /**
-     * @return Массив из карт игрового поля
+     * @return Массив из фишек игрового поля
      */
-    public Card[][] getArray() {
+    public Dib[][] getArray() {
         return array;
     }
 
     /**
-     * @param array Массив из карт игрового поля
+     * @param array Массив из фишек игрового поля
      */
-    public void setArray(Card[][] array) {
+    public void setArray(Dib[][] array) {
         this.array = array;
     }
 
     /**
-     * Заменить карту игрового поля
+     * Заменить фишку игрового поля
      * @param row строка
      * @param column колонка
-     * @param card карта
+     * @param dib фишка
      */
-    public void setCard(int row, int column, Card card) {
-        array[row][column] = card;
+    public void setDib(int row, int column, Dib dib) {
+        array[row][column] = dib;
     }
 
     /**
-     * Возвращает карту по индексам
+     * Возвращает фишку по индексам
      * @param row строка
      * @param column столбец
-     * @return карта
+     * @return фишка
      */
-    public Card getCard(int row, int column) {
+    public Dib getDib(int row, int column) {
         return array[row][column];
     }
 }

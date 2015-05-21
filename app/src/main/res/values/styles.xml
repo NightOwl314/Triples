@@ -16,8 +16,8 @@
         <item name="android:layout_margin">10dp</item>
     </style>
 
-    <!--Стиль для каждой карты-->
-    <style name="cardGameStyle">
+    <!--Стиль для каждой фишки-->
+    <style name="dibGameStyle">
         <item name="android:layout_width">180dp</item>
         <item name="android:layout_height">150dp</item>
         <item name="android:layout_margin">7dp</item>
@@ -25,7 +25,7 @@
     </style>
 
     <!--Стиль строк для игрового поля-->
-    <style name="rowCardsGameStyle">
+    <style name="rowDibsGameStyle">
         <item name="android:layout_width">750dp</item>
         <item name="android:layout_height">150dp</item>
         <item name="android:layout_centerHorizontal">true</item>
