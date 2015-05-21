@@ -1,0 +1,49 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="ru.edu.vstu.www.triples.activities.WinActivity"
+    style="@style/activityStyle">
+
+    <TextView style="@style/titleStyle"
+        android:text="@string/congratulate"
+        android:textSize="50sp"
+        android:id="@+id/textWin"/>
+
+    <TextView style="@style/titleStyle"
+        android:text="@string/win"
+        android:textSize="50sp"
+        android:layout_below="@+id/textWin"/>
+
+    <TextView
+        android:text="@string/scoreWin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:textColor="@color/dark_green"
+        android:textSize="40sp"
+        android:layout_marginLeft="100dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:text="@string/timeWin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="400dp"
+        android:layout_marginLeft="100dp"
+        android:textColor="@color/dark_green"
+        android:textSize="40sp"
+        android:textStyle="bold"/>
+
+    <Button style="@style/btnActivityStyle"
+        android:background="@drawable/btn_home100"
+        android:id="@+id/homeFromWinBtn"
+        android:layout_centerHorizontal="false"
+        android:layout_marginLeft="150dp"/>
+
+    <Button style="@style/btnActivityStyle"
+        android:background="@drawable/btn_records100"
+        android:id="@+id/recordFromWinBtn"
+        android:layout_centerHorizontal="false"
+        android:layout_marginLeft="350dp"/>
+</RelativeLayout>
+

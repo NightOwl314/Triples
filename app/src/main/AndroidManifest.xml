@@ -14,7 +14,6 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -29,12 +28,12 @@
             android:theme="@style/Theme.AppCompat.NoActionBar">
         </activity>
         <activity
-            android:name=".activities.InfoActivity"
+            android:name=".activities.WinActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar">
         </activity>
         <activity
-            android:name=".activities.StoreActivity"
+            android:name=".activities.InfoActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar">
         </activity>
@@ -49,5 +48,4 @@
             android:theme="@style/Theme.AppCompat.NoActionBar">
         </activity>
     </application>
-
 </manifest>

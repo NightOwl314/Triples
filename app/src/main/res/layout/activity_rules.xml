@@ -1,27 +1,25 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="ru.edu.vstu.www.triples.activities.RulesActivity"
     style="@style/activityStyle">
 
     <TextView style="@style/titleStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="@string/rulesTitle"
-        android:id="@+id/rulesTitle"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/rulesTitle"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/rules"
         android:id="@+id/rulesText"
         android:textColor="@color/dark_green"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/rulesTitle"/>
+        android:layout_below="@+id/rulesTitle"
+        android:gravity="left"/>
 
-    <Button style="btnActivityStyle"
-        android:background="@drawable/btn_home100" />
-
+    <Button style="@style/btnActivityStyle"
+        android:background="@drawable/btn_back100"
+        android:id="@+id/backFromRulesBtn"/>
 </RelativeLayout>

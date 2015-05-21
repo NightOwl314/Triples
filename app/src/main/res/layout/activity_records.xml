@@ -1,9 +1,28 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="ru.edu.vstu.www.triples.activities.RecordsActivity"
     style="@style/activityStyle">
 
-    <TextView android:text="records" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <TextView style="@style/titleStyle"
+        android:text="@string/recordsTitle"
+        android:id="@+id/recordTitle"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/recordTitle"
+        android:id="@+id/scroll">
+        <LinearLayout
+            android:id="@+id/linLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        </LinearLayout>
+    </ScrollView>
+
+    <Button style="@style/btnActivityStyle"
+        android:background="@drawable/btn_back100"
+        android:id="@+id/backFromRecordsBtn"/>
 
 </RelativeLayout>

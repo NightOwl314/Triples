@@ -7,12 +7,12 @@ import android.view.View;
 
 import ru.edu.vstu.www.triples.R;
 
-public class StoreActivity extends AppCompatActivity implements View.OnClickListener {
+public class WinActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_store);
+        setContentView(R.layout.activity_win);
     }
 
 

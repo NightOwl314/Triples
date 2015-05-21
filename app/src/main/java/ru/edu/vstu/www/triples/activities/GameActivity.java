@@ -214,6 +214,5 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     private void fillGameField() {
         Log.d(Constants.LOG_TAG, "GameActivity: Заполняем карты");
-        gameLayout.setBackgroundResource(R.drawable.font_green);
     }
 }

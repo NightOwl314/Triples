@@ -1,4 +1,5 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainMenuActivity"
     style="@style/activityStyle">
@@ -14,7 +15,7 @@
     <LinearLayout
         android:id="@+id/listButtons"
         android:layout_width="520dp"
-        android:layout_height="600dp"
+        android:layout_height="500dp"
         android:orientation="vertical"
         android:layout_centerInParent="true">
 
@@ -33,9 +34,5 @@
         <Button style="@style/btnMainMenuStyle"
             android:background="@drawable/button_records"
             android:id="@+id/recordBtn"/>
-
-        <Button style="@style/btnMainMenuStyle"
-            android:background="@drawable/button_store"
-            android:id="@+id/storeBtn"/>
     </LinearLayout>
 </RelativeLayout>

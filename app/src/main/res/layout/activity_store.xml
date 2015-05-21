@@ -1,9 +1,0 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="ru.edu.vstu.www.triples.activities.StoreActivity"
-    style="@style/activityStyle">
-
-    <TextView android:text="store" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-</RelativeLayout>

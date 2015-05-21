@@ -52,6 +52,38 @@
         <item name="android:textSize">40sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:layout_margin">15dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
     </style>
 
+    <!--Стиль заголовков группы настроек-->
+    <style name="settSubtitleStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginTop">50dp</item>
+        <item name="android:textColor">@color/dark_green</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!--Стиль групп радио кнопок-->
+    <style name="radioGroupSelectStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+
+    <!--Стиль радио кнопок-->
+    <style name="radioSelectStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:textColor">@color/dark_green</item>
+        <item name="android:textSize">35sp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:visible">true</item>
+        <item name="android:actionMenuTextColor">@color/dark_green</item>
+    </style>
 </resources>

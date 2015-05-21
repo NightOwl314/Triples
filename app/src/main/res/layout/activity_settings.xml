@@ -1,9 +1,55 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="ru.edu.vstu.www.triples.activities.SettingsActivity"
     style="@style/activityStyle">
 
-    <TextView android:text="settings" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <TextView style="@style/titleStyle"
+        android:text="@string/settingsTitle"
+        android:id="@+id/settingsTitle"/>
+
+    <Button style="@style/btnActivityStyle"
+        android:background="@drawable/btn_back100"
+        android:id="@+id/backFromSettingsBtn"/>
+
+    <TextView style="@style/settSubtitleStyle"
+        android:text="@string/levelTitle"
+        android:id="@+id/levelTitle"
+        android:layout_below="@+id/settingsTitle"/>
+
+    <RadioGroup style="@style/radioGroupSelectStyle"
+        android:layout_below="@+id/levelTitle"
+        android:layout_alignStart="@+id/levelTitle"
+        android:id="@+id/levelGroup">
+
+        <RadioButton style="@style/radioSelectStyle"
+            android:text="@string/levelEasy"
+            android:id="@+id/radioLevelEasy"
+            android:checked="true"/>
+
+        <RadioButton style="@style/radioSelectStyle"
+            android:text="@string/levelInvolved"
+            android:id="@+id/radioLevelInvolved"/>
+    </RadioGroup>
+
+    <TextView style="@style/settSubtitleStyle"
+        android:text="@string/soundTitle"
+        android:id="@+id/soundTitle"
+        android:layout_below="@id/levelGroup"/>
+
+    <RadioGroup style="@style/radioGroupSelectStyle"
+        android:layout_below="@+id/soundTitle"
+        android:layout_alignStart="@+id/levelTitle"
+        android:id="@+id/soundGroup">
+
+        <RadioButton style="@style/radioSelectStyle"
+            android:text="@string/soundOn"
+            android:id="@+id/radioSoundOn"
+            android:checked="true"/>
+
+        <RadioButton style="@style/radioSelectStyle"
+            android:text="@string/soundOff"
+            android:id="@+id/radioSoundOff"/>
+    </RadioGroup>
 
 </RelativeLayout>

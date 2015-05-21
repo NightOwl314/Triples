@@ -1,9 +1,9 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="ru.edu.vstu.www.triples.activities.GameActivity"
     style="@style/activityStyle"
-    android:id="@+id/gameLayout"
-    android:background="@drawable/font_rainbow">
+    android:id="@+id/gameLayout">
 
     <LinearLayout
         android:id="@+id/lineMenu"
@@ -29,15 +29,12 @@
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_gravity="center_vertical"
-            android:background="@color/white"
-            android:textColor="@color/green"
+            android:textColor="@color/dark_green"
             android:textSize="46sp"
             android:text="@string/score_zero"
             android:id="@+id/score"
             android:gravity="center"
             android:layout_marginLeft="150dp"/>
-
-
     </LinearLayout>
 
     <TableLayout

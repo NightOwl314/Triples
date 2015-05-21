@@ -25,14 +25,12 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
         Button rulesBtn = (Button) findViewById(R.id.rulesBtn);
         Button settingsBtn = (Button) findViewById(R.id.settingsBtn);
         Button recordBtn = (Button) findViewById(R.id.recordBtn);
-        Button storeBtn = (Button) findViewById(R.id.storeBtn);
         Button infoBtn = (Button) findViewById(R.id.infoBtn);
 
         playBtn.setOnClickListener(this);
         rulesBtn.setOnClickListener(this);
         settingsBtn.setOnClickListener(this);
         recordBtn.setOnClickListener(this);
-        storeBtn.setOnClickListener(this);
         infoBtn.setOnClickListener(this);
     }
 
@@ -64,11 +62,6 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
             case R.id.recordBtn:
                 Log.d(Constants.LOG_TAG, "MainMenuActivity: Нажата кнопка Рекорды");
                 intent = new Intent(this, RecordsActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.storeBtn:
-                Log.d(Constants.LOG_TAG, "MainMenuActivity: Нажата кнопка Магазин");
-                intent = new Intent(this, StoreActivity.class);
                 startActivity(intent);
                 break;
             case R.id.infoBtn:

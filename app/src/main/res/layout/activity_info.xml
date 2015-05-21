@@ -1,11 +1,25 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="ru.edu.vstu.www.triples.activities.InfoActivity"
     style="@style/activityStyle">
 
-    <TextView
-        android:text="info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <TextView style="@style/titleStyle"
+        android:text="@string/infoTitle"
+        android:id="@+id/infoTitle"/>
 
+    <TextView
+        android:layout_width="500dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/infoText"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/dark_green"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <Button style="@style/btnActivityStyle"
+        android:background="@drawable/btn_back100"
+        android:id="@+id/backFromInfoBtn"/>
 </RelativeLayout>
