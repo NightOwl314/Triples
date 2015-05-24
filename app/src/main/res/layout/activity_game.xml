@@ -32,7 +32,7 @@
             android:textSize="46sp"
             android:text="@string/score_zero"
             android:id="@+id/score"
-            android:gravity="center"
+            android:gravity="bottom|center"
             android:layout_marginLeft="150dp"/>
     </LinearLayout>
 
@@ -46,52 +46,64 @@
             android:id="@+id/line0">
 
             <Button style="@style/dibGameStyle"
-                android:id="@+id/dib00" />
+                android:id="@+id/dib00"
+                android:background="@drawable/background"/>
 
             <Button style="@style/dibGameStyle"
-                android:id="@+id/dib01" />
+                android:id="@+id/dib01"
+                android:background="@drawable/background"/>
 
             <Button style="@style/dibGameStyle"
-                android:id="@+id/dib02" />
+                android:id="@+id/dib02"
+                android:background="@drawable/background"/>
         </TableRow>
 
         <TableRow style="@style/rowDibsGameStyle"
             android:id="@+id/line1">
 
             <Button style="@style/dibGameStyle"
-                android:id="@+id/dib10" />
+                android:id="@+id/dib10"
+                android:background="@drawable/background"/>
 
             <Button style="@style/dibGameStyle"
-                android:id="@+id/dib11" />
+                android:id="@+id/dib11"
+                android:background="@drawable/background"/>
 
             <Button style="@style/dibGameStyle"
-                android:id="@+id/dib12" />
+                android:id="@+id/dib12"
+                android:background="@drawable/background"/>
         </TableRow>
 
         <TableRow style="@style/rowDibsGameStyle"
             android:id="@+id/line2">
 
             <Button style="@style/dibGameStyle"
-                android:id="@+id/dib20" />
+                android:id="@+id/dib20"
+                android:background="@drawable/background"/>
 
             <Button style="@style/dibGameStyle"
-                android:id="@+id/dib21" />
+                android:id="@+id/dib21"
+                android:background="@drawable/background"/>
 
             <Button style="@style/dibGameStyle"
-                android:id="@+id/dib22" />
+                android:id="@+id/dib22"
+                android:background="@drawable/background"/>
         </TableRow>
 
         <TableRow style="@style/rowDibsGameStyle"
             android:id="@+id/line3">
 
             <Button style="@style/dibGameStyle"
-                android:id="@+id/dib30" />
+                android:id="@+id/dib30"
+                android:background="@drawable/background"/>
 
             <Button style="@style/dibGameStyle"
-                android:id="@+id/dib31" />
+                android:id="@+id/dib31"
+                android:background="@drawable/background"/>
 
             <Button style="@style/dibGameStyle"
-                android:id="@+id/dib32" />
+                android:id="@+id/dib32"
+                android:background="@drawable/background"/>
         </TableRow>
 
         <TableRow style="@style/rowDibsGameStyle"
@@ -99,15 +111,15 @@
 
             <Button style="@style/dibGameStyle"
                 android:id="@+id/dib40"
-                android:background="@drawable/s_b1cs"/>
+                android:background="@drawable/background"/>
 
             <Button style="@style/dibGameStyle"
                 android:id="@+id/dib41"
-                android:background="@drawable/b1cf"/>
+                android:background="@drawable/background"/>
 
             <Button style="@style/dibGameStyle"
                 android:id="@+id/dib42"
-                android:background="@drawable/s_b1cf"/>
+                android:background="@drawable/background"/>
         </TableRow>
 
     </TableLayout>

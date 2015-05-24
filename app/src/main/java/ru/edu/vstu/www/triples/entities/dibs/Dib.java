@@ -6,7 +6,7 @@ public class Dib {
     private final DibForm form;             //форма фигур
     private final DibFilling filling;       //заполнение фигур
 
-    private final String picture;            //название изображения: цвет+количество+форма+заполнение
+    private final String name;            //название изображения: цвет+количество+форма+заполнение
 
     public Dib(DibColor color, DibNumber number, DibForm form, DibFilling filling) {
         this.color = color;
@@ -14,7 +14,7 @@ public class Dib {
         this.form = form;
         this.filling = filling;
 
-        this.picture = this.color.getLabel() +
+        this.name = this.color.getLabel() +
                        this.number.getLabel() +
                        this.form.getLabel() +
                        this.filling.getLabel();
@@ -36,8 +36,8 @@ public class Dib {
         return filling;
     }
 
-    public String getPicture() {
-        return picture;
+    public String getName() {
+        return name;
     }
 
     @Override
@@ -52,5 +52,10 @@ public class Dib {
                 this.number == dib.getNumber() &&
                 this.form == dib.getForm() &&
                 this.filling == dib.getFilling();
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }
