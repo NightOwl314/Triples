@@ -1,4 +1,4 @@
-package ru.edu.vstu.www.triples.entities;
+package ru.edu.vstu.www.triples.entities.coordinates;
 
 public class Coordinate {
     private final int row;

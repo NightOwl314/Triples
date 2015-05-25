@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 import ru.edu.vstu.www.triples.R;
-import ru.edu.vstu.www.triples.entities.Constants;
+import ru.edu.vstu.www.triples.services.Constants;
 
 
 public class MainMenuActivity extends AppCompatActivity implements View.OnClickListener {
@@ -80,7 +80,7 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     protected void onRestart() {
-        super.onStart();
+        super.onRestart();
         Log.d(Constants.LOG_TAG, "MainMenuActivity: onRestart()");
     }
 

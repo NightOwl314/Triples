@@ -1,4 +1,4 @@
-package ru.edu.vstu.www.triples.entities;
+package ru.edu.vstu.www.triples.services;
 
 public class Constants {
 
@@ -8,6 +8,6 @@ public class Constants {
     public static final int COUNT_DIBS = 15;           //общее количество фишек игрового поля
     public static final int PLUS_SCORE = 3;            //за каждую правильную тройку добавляем 3 очка
     public static final int MINUS_SCORE = 6;           //за каждую неправильную тройку отнимаем 6 очков
-    public static final int WIN_SCORE = 333;           //партия выиграна, если набрали 333 очка
+    public static final int WIN_SCORE = 12;           //партия выиграна, если набрали 333 очка TODO
     public static final int COUNT_DIBS_IN_TRIPLES = 3; //количество фишек в тройке
 }

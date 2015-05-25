@@ -3,8 +3,8 @@ package ru.edu.vstu.www.triples.entities.field;
 import java.util.ArrayList;
 import java.util.List;
 
-import ru.edu.vstu.www.triples.entities.Constants;
-import ru.edu.vstu.www.triples.entities.Coordinate;
+import ru.edu.vstu.www.triples.services.Constants;
+import ru.edu.vstu.www.triples.entities.coordinates.Coordinate;
 import ru.edu.vstu.www.triples.entities.dibs.Dib;
 
 public class GameField {
@@ -103,8 +103,15 @@ public class GameField {
     /**
      * @return текущий счет
      */
-    public String getScore() {
+    public String getScoreStr() {
         return "" + score;
+    }
+
+    /**
+     * @return текущий счет
+     */
+    public int getScore() {
+        return score;
     }
 
     /**

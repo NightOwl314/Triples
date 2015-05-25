@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import ru.edu.vstu.www.triples.R;
-import ru.edu.vstu.www.triples.entities.Constants;
-import ru.edu.vstu.www.triples.entities.Coordinate;
+import ru.edu.vstu.www.triples.services.Constants;
+import ru.edu.vstu.www.triples.entities.coordinates.Coordinate;
 import ru.edu.vstu.www.triples.entities.dibs.Dib;
 import ru.edu.vstu.www.triples.entities.dibs.DibService;
 

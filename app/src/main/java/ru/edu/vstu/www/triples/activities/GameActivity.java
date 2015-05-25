@@ -15,9 +15,9 @@ import java.util.List;
 import java.util.Map;
 
 import ru.edu.vstu.www.triples.R;
-import ru.edu.vstu.www.triples.entities.Constants;
-import ru.edu.vstu.www.triples.entities.Coordinate;
-import ru.edu.vstu.www.triples.entities.SettingsService;
+import ru.edu.vstu.www.triples.services.Constants;
+import ru.edu.vstu.www.triples.entities.coordinates.Coordinate;
+import ru.edu.vstu.www.triples.services.SettingsService;
 import ru.edu.vstu.www.triples.entities.field.GameField;
 import ru.edu.vstu.www.triples.entities.field.GameFieldService;
 import ru.edu.vstu.www.triples.entities.dibs.Dib;
@@ -91,7 +91,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     public void onBackPressed() {
         Log.d(Constants.LOG_TAG, "GameActivity: onBackPressed()");
         fs.saveResultGame();
-        Intent intent = new Intent(this, GameActivity.class);
+        Intent intent = new Intent(this, MainMenuActivity.class);
         startActivity(intent);
     }
 
@@ -181,15 +181,15 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void onClickDib(int iIn, int jIn, Button dib) {
+    private void onClickDib(int iIn, int jIn, Button button) {
         if (field.isSelectDib(iIn, jIn)) {
             //если данная фишка выбрана, то убираем выделение
             field.delCoordinate(iIn, jIn);
-            dib.setBackgroundResource(fs.getBackgroundForDib(field.getDib(iIn, jIn).getName()));
+            button.setBackgroundResource(fs.getBackgroundForDib(field.getDib(iIn, jIn).getName()));
             return;
         }
 
-        dib.setBackgroundResource(fs.getBackgroundForDib("s_" + field.getDib(iIn, jIn).getName()));
+        button.setBackgroundResource(fs.getBackgroundForDib("s_" + field.getDib(iIn, jIn).getName()));
         field.addCoordinate(iIn, jIn);
         if (field.getCoordinates().size() < Constants.COUNT_DIBS_IN_TRIPLES) {
             //если еще не выбраны три карты, то пока ничего проверять не надо
@@ -222,8 +222,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             btn.setBackgroundResource(fs.getBackgroundForDib(field.getDib(i, j).getName()));
         }
 
-        score.setText(field.getScore());
+        score.setText(field.getScoreStr());
         field.clearCoordinates();
+
+        if (field.getScore() >= Constants.WIN_SCORE) {
+            Intent intent = new Intent(this, WinActivity.class);
+            startActivity(intent);
+        }
     }
 
     @Override
@@ -324,6 +329,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         dib41.setBackgroundResource(fs.getBackgroundForDib(field.getDib(4,1).getName()));
         dib42.setBackgroundResource(fs.getBackgroundForDib(field.getDib(4,2).getName()));
 
-        score.setText(field.getScore());
+        score.setText(field.getScoreStr());
     }
 }
