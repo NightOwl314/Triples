@@ -22,8 +22,11 @@ public class InfoActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(Constants.LOG_TAG, "InfoActivity: onCreate()");
         setContentView(R.layout.activity_info);
+        Log.d(Constants.LOG_TAG, "InfoActivity: Находим кнопку и устанавливаем текст");
         ((TextView) findViewById(R.id.infoText)).setText(INFO);
+
         Button backFromInfoBtn = (Button) findViewById(R.id.backFromInfoBtn);
         backFromInfoBtn.setOnClickListener(this);
     }
@@ -34,22 +37,22 @@ public class InfoActivity extends AppCompatActivity implements View.OnClickListe
         return false;
     }
 
-    /**
-     * Обработка аппаратной кнопли BACK
-     */
     @Override
     public void onBackPressed() {
         Log.d(Constants.LOG_TAG, "InfoActivity: onBackPressed()");
-        Intent intent = new Intent(this, MainMenuActivity.class);
-        startActivity(intent);
+        gotoBack();
     }
 
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.backFromInfoBtn) {
             Log.d(Constants.LOG_TAG, "InfoActivity: Нажата кнопка Назад");
-            Intent intent = new Intent(this, MainMenuActivity.class);
-            startActivity(intent);
+            gotoBack();
         }
+    }
+
+    private void gotoBack() {
+        Intent intent = new Intent(this, MainMenuActivity.class);
+        startActivity(intent);
     }
 }

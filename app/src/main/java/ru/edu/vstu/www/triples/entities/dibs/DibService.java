@@ -1,6 +1,10 @@
 package ru.edu.vstu.www.triples.entities.dibs;
 
+import android.util.Log;
+
 import java.util.Random;
+
+import ru.edu.vstu.www.triples.services.Constants;
 
 public class DibService {
     Random rand = new Random();
@@ -150,9 +154,15 @@ public class DibService {
      * @return правильно/ не правильно (true/false)
      */
     public boolean isTriple(Dib dib1, Dib dib2, Dib dib3) {
-        return isRightColors(dib1.getColor(), dib2.getColor(), dib3.getColor()) &&
+        //todo
+        boolean right = isRightColors(dib1.getColor(), dib2.getColor(), dib3.getColor()) &&
                 isRightNumber(dib1.getNumber(), dib2.getNumber(), dib3.getNumber()) &&
                 isRightForm(dib1.getForm(), dib2.getForm(), dib3.getForm()) &&
                 isRightFilling(dib1.getFilling(), dib2.getFilling(), dib3.getFilling());
+        if (right) {
+            Log.d(Constants.LOG_TAG, dib1.toString() + " " +
+                    dib2.toString() + " " + dib3 + " ");
+        }
+        return right;
     }
 }

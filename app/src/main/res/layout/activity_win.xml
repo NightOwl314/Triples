@@ -7,32 +7,52 @@
     <TextView style="@style/titleStyle"
         android:text="@string/congratulate"
         android:textSize="50sp"
-        android:id="@+id/textWin"/>
+        android:id="@+id/textCongratulation"/>
 
     <TextView style="@style/titleStyle"
         android:text="@string/win"
         android:textSize="50sp"
-        android:layout_below="@+id/textWin"/>
+        android:layout_below="@+id/textCongratulation"
+        android:id="@+id/textWin"/>
 
-    <TextView
-        android:text="@string/scoreWin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
-        android:textColor="@color/dark_green"
-        android:textSize="40sp"
-        android:layout_marginLeft="100dp"
-        android:textStyle="bold"/>
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_below="@+id/textWin"
+        android:layout_marginTop="100dp">
 
-    <TextView
-        android:text="@string/timeWin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="400dp"
-        android:layout_marginLeft="100dp"
-        android:textColor="@color/dark_green"
-        android:textSize="40sp"
-        android:textStyle="bold"/>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+            <TextView style="@style/textWin"
+                android:layout_width="250dp"
+                android:layout_gravity="right"
+                android:text="@string/scoreWin"/>
+
+            <TextView style="@style/textWin"
+                android:layout_width="wrap_content"
+                android:id="@+id/textScore"
+                android:gravity="left"
+                android:layout_marginLeft="50dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+            <TextView style="@style/textWin"
+                android:text="@string/timeWin"
+                android:layout_width="250dp"
+                android:layout_gravity="right"/>
+
+            <TextView style="@style/textWin"
+                android:layout_width="wrap_content"
+                android:id="@+id/textTime"
+                android:gravity="left"
+                android:layout_marginLeft="50dp"/>
+        </TableRow>
+    </TableLayout>
 
     <Button style="@style/btnActivityStyle"
         android:background="@drawable/btn_home100"

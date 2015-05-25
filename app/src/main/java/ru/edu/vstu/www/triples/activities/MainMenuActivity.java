@@ -52,11 +52,13 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
             case R.id.rulesBtn:
                 Log.d(Constants.LOG_TAG, "MainMenuActivity: Нажата кнопка Правила");
                 intent = new Intent(this, RulesActivity.class);
+                intent.putExtra(Constants.PARAM_FROM_MENU, true);
                 startActivity(intent);
                 break;
             case R.id.settingsBtn:
                 Log.d(Constants.LOG_TAG, "MainMenuActivity: Нажата кнопка Настройки");
                 intent = new Intent(this, SettingsActivity.class);
+                intent.putExtra(Constants.PARAM_FROM_MENU, true);
                 startActivity(intent);
                 break;
             case R.id.recordBtn:
@@ -70,6 +72,14 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(intent);
                 break;
         }
+    }
+
+    /**
+     * Обработка аппаратной кнопли BACK
+     */
+    @Override
+    public void onBackPressed() {
+        //ничего не делаем
     }
 
     @Override

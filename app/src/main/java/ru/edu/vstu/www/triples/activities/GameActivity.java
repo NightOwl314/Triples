@@ -15,17 +15,18 @@ import java.util.List;
 import java.util.Map;
 
 import ru.edu.vstu.www.triples.R;
-import ru.edu.vstu.www.triples.services.Constants;
 import ru.edu.vstu.www.triples.entities.coordinates.Coordinate;
-import ru.edu.vstu.www.triples.services.SettingsService;
+import ru.edu.vstu.www.triples.entities.dibs.Dib;
 import ru.edu.vstu.www.triples.entities.field.GameField;
 import ru.edu.vstu.www.triples.entities.field.GameFieldService;
-import ru.edu.vstu.www.triples.entities.dibs.Dib;
+import ru.edu.vstu.www.triples.services.Constants;
+import ru.edu.vstu.www.triples.services.SettingsService;
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 
     private GameFieldService fs = new GameFieldService();
     private SettingsService ss = new SettingsService();
+    private Map<String, Button> synonymBtn;
 
     private GameField field;
 
@@ -44,9 +45,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private Button dib40;
     private Button dib41;
     private Button dib42;
-
-    private Map<String, Button> synonymBtn;
-
     private TextView score;
 
     private void refreshBtn() {
@@ -84,9 +82,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         return false;
     }
 
-    /**
-     * Обработка аппаратной кнопли BACK
-     */
     @Override
     public void onBackPressed() {
         Log.d(Constants.LOG_TAG, "GameActivity: onBackPressed()");
@@ -97,7 +92,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        Log.d(Constants.LOG_TAG, "GameActivity: onClick()");
         Intent intent;
         switch (v.getId()) {
             case R.id.menuGameBtn:
@@ -108,74 +102,74 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.rulesGameBtn:
                 Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка Правила");
-                //TODO
                 intent = new Intent(this, RulesActivity.class);
+                intent.putExtra(Constants.PARAM_FROM_MENU, false);
                 startActivity(intent);
                 break;
             case R.id.settingsGameBtn:
                 Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка Настройки");
-                //TODO
                 intent = new Intent(this, SettingsActivity.class);
+                intent.putExtra(Constants.PARAM_FROM_MENU, false);
                 startActivity(intent);
                 break;
             case R.id.dib00:
-                Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка dib00");
+                Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка dib00 с фишкой " + field.getDib(0, 0).toString());
                 onClickDib(0, 0, dib00);
                 break;
             case R.id.dib01:
-                Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка dib01");
+                Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка dib01 с фишкой " + field.getDib(0, 1).toString());
                 onClickDib(0, 1, dib01);
                 break;
             case R.id.dib02:
-                Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка dib02");
+                Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка dib02 с фишкой " + field.getDib(0, 2).toString());
                 onClickDib(0, 2, dib02);
                 break;
             case R.id.dib10:
-                Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка dib10");
+                Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка dib10 с фишкой " + field.getDib(1, 0).toString());
                 onClickDib(1, 0, dib10);
                 break;
             case R.id.dib11:
-                Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка dib11");
+                Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка dib11 с фишкой " + field.getDib(1, 1).toString());
                 onClickDib(1, 1, dib11);
                 break;
             case R.id.dib12:
-                Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка dib12");
+                Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка dib12 с фишкой " + field.getDib(1, 2).toString());
                 onClickDib(1, 2, dib12);
                 break;
             case R.id.dib20:
-                Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка dib20");
+                Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка dib20 с фишкой " + field.getDib(2, 0).toString());
                 onClickDib(2, 0, dib20);
                 break;
             case R.id.dib21:
-                Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка dib21");
+                Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка dib21 с фишкой " + field.getDib(2, 1).toString());
                 onClickDib(2, 1, dib21);
                 break;
             case R.id.dib22:
-                Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка dib22");
+                Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка dib22 с фишкой " + field.getDib(2, 2).toString());
                 onClickDib(2, 2, dib22);
                 break;
             case R.id.dib30:
-                Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка dib30");
+                Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка dib30 с фишкой " + field.getDib(3, 0).toString());
                 onClickDib(3, 0, dib30);
                 break;
             case R.id.dib31:
-                Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка dib31");
+                Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка dib31 с фишкой " + field.getDib(3, 1).toString());
                 onClickDib(3, 1, dib31);
                 break;
             case R.id.dib32:
-                Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка dib32");
+                Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка dib32 с фишкой " + field.getDib(3, 2).toString());
                 onClickDib(3, 2, dib32);
                 break;
             case R.id.dib40:
-                Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка dib40");
+                Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка dib40 с фишкой " + field.getDib(4, 0).toString());
                 onClickDib(4, 0, dib40);
                 break;
             case R.id.dib41:
-                Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка dib41");
+                Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка dib41 с фишкой " + field.getDib(4, 1).toString());
                 onClickDib(4, 1, dib41);
                 break;
             case R.id.dib42:
-                Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка dib42");
+                Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка dib42 с фишкой " + field.getDib(4, 2).toString());
                 onClickDib(4, 2, dib42);
                 break;
         }
@@ -227,6 +221,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
         if (field.getScore() >= Constants.WIN_SCORE) {
             Intent intent = new Intent(this, WinActivity.class);
+            intent.putExtra(Constants.PARAM_SCORE, field.getScoreStr());
+            intent.putExtra(Constants.PARAM_TIME, "01:50:34"); //TODO
             startActivity(intent);
         }
     }
@@ -239,7 +235,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onRestart() {
-        super.onStart();
+        super.onRestart();
         Log.d(Constants.LOG_TAG, "GameActivity: onRestart()");
     }
 

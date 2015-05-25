@@ -1,13 +1,16 @@
 package ru.edu.vstu.www.triples.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import ru.edu.vstu.www.triples.R;
+import ru.edu.vstu.www.triples.services.Constants;
 
 public class RulesActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -29,18 +32,25 @@ public class RulesActivity extends AppCompatActivity implements View.OnClickList
             " - простой (ошибки баллы не снимаются);\n" +
             " - сложный (ошибку снимается 6 баллов).";
 
-    private Button back;
-    private TextView text;
+    private boolean fromMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(Constants.LOG_TAG, "RulesActivity: onCreate()");
         setContentView(R.layout.activity_rules);
-        back = (Button) findViewById(R.id.backFromRulesBtn);
+        Button back = (Button) findViewById(R.id.backFromRulesBtn);
         back.setOnClickListener(this);
-
-        text = (TextView) findViewById(R.id.rulesText);
+        TextView text = (TextView) findViewById(R.id.rulesText);
         text.setText(RULES);
+
+        Intent intent = getIntent();
+        fromMenu = intent.getBooleanExtra(Constants.PARAM_FROM_MENU, true);
+        if (fromMenu) {
+            Log.d(Constants.LOG_TAG, "RulesActivity: пришли из меню");
+        } else {
+            Log.d(Constants.LOG_TAG, "RulesActivity: пришли из игры");
+        }
     }
 
     @Override
@@ -50,6 +60,27 @@ public class RulesActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
+        if (v.getId() == R.id.backFromRulesBtn) {
+            Log.d(Constants.LOG_TAG, "RulesActivity: Нажата кнопка Назад");
+            gotoBack();
+        }
+    }
 
+    @Override
+    public void onBackPressed() {
+        Log.d(Constants.LOG_TAG, "RulesActivity: onBackPressed()");
+        gotoBack();
+    }
+
+    private void gotoBack() {
+        if (fromMenu) {
+            Log.d(Constants.LOG_TAG, "RulesActivity: возвращаемся в меню меню");
+            Intent intent = new Intent(this, MainMenuActivity.class);
+            startActivity(intent);
+        } else {
+            Log.d(Constants.LOG_TAG, "RulesActivity: возвращаемся в игру");
+            Intent intent = new Intent(this, GameActivity.class);
+            startActivity(intent);
+        }
     }
 }
