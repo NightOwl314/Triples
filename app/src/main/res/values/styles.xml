@@ -87,6 +87,13 @@
         <item name="android:actionMenuTextColor">@color/dark_green</item>
     </style>
 
+    <!--Комментарии для выбора уровня-->
+    <style name="textComment">
+        <item name="android:textColor">@color/dark_green</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:layout_marginLeft">50dp</item>
+    </style>
+
     <!--Стиль для текстов на экране с результатом игры-->
     <style name="textWin">
         <item name="android:layout_height">200dp</item>

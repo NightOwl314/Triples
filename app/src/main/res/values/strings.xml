@@ -15,4 +15,6 @@
     <string name="win">Вы выиграли!</string>
     <string name="scoreWin">Очки:</string>
     <string name="timeWin">Время:</string>
+    <string name="easyLevelComment">за ошибки очки не снимаются</string>
+    <string name="involvedLevelComment">за ошибку снимается 6 очков</string>
 </resources>

@@ -79,7 +79,7 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
      */
     @Override
     public void onBackPressed() {
-        //ничего не делаем
+        android.os.Process.killProcess(android.os.Process.myPid());
     }
 
     @Override

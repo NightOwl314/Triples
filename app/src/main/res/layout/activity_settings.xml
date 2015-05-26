@@ -23,9 +23,19 @@
             android:id="@+id/radioLevelEasy"
             android:checked="true"/>
 
+        <TextView style="@style/textComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/easyLevelComment"/>
+
         <RadioButton style="@style/radioSelectStyle"
             android:text="@string/levelInvolved"
             android:id="@+id/radioLevelInvolved"/>
+
+        <TextView style="@style/textComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/involvedLevelComment"/>
     </RadioGroup>
 
     <TextView style="@style/settSubtitleStyle"
