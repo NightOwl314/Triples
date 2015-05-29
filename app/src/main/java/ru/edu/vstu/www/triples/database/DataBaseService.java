@@ -4,6 +4,11 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import ru.edu.vstu.www.triples.entities.records.Record;
+
 public class DataBaseService {
 
     private static final String TABLE_RECORDS = "records";
@@ -11,7 +16,6 @@ public class DataBaseService {
     private static final String COLUMN_TIME = "time";
     private static final String COLUMN_SCORE = "score";
     private static final String TABLE_SETTINGS = "settings";
-    private static final String COLUMN_KEY = "key";
     private static final String COLUMN_VALUE = "value";
 
     private static final String SELECTION_SETTINGS = "key like ?";
@@ -32,15 +36,19 @@ public class DataBaseService {
         boolean soundOn = true;
         String[] columns = {COLUMN_VALUE};
         String[] arg = {KEY_SOUND};
-        Cursor cursor = base.query(TABLE_SETTINGS, columns, SELECTION_SETTINGS, arg, null, null, null);
-        if (cursor != null) {
-            if (cursor.moveToFirst()) {
+        Cursor cursor = null;
+        try {
+            cursor = base.query(TABLE_SETTINGS, columns, SELECTION_SETTINGS, arg, null, null, null);
+            if (cursor != null && cursor.moveToFirst()) {
                 String value = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE));
                 if (VALUE_SOUND_OFF.equals(value)) {
                     soundOn = false;
                 }
             }
-            cursor.close();
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
         }
         return soundOn;
     }
@@ -70,15 +78,19 @@ public class DataBaseService {
         boolean easyLevel = true;
         String[] columns = {COLUMN_VALUE};
         String[] arg = {KEY_LEVEL};
-        Cursor cursor = base.query(TABLE_SETTINGS, columns, SELECTION_SETTINGS, arg, null, null, null);
-        if (cursor != null) {
-            if (cursor.moveToFirst()) {
+        Cursor cursor = null;
+        try {
+            cursor = base.query(TABLE_SETTINGS, columns, SELECTION_SETTINGS, arg, null, null, null);
+            if (cursor != null && cursor.moveToFirst()) {
                 String value = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE));
                 if (VALUE_LEVEL_INVOLVED.equals(value)) {
                     easyLevel = false;
                 }
             }
-            cursor.close();
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
         }
         return easyLevel;
     }
@@ -97,5 +109,51 @@ public class DataBaseService {
         }
         String[] arg = {KEY_LEVEL};
         base.update(TABLE_SETTINGS, cv, SELECTION_SETTINGS, arg);
+    }
+
+    /**
+     * Сохраняет рекорд в базу
+     * @param base соединение к базе
+     * @param record рекорд
+     * @return id рекорда
+     */
+    public static long saveRecord(SQLiteDatabase base, Record record) {
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_DATE, record.getDate());
+        cv.put(COLUMN_TIME, record.getTime());
+        cv.put(COLUMN_SCORE, record.getScore());
+        return base.insert(TABLE_RECORDS, null, cv);
+    }
+
+    /**
+     * Возвращает список всех рекордов в базе, отсортированных по очкам, времени и дате
+     * @param base соединение к базе
+     * @return список рекордов, может быть пустым
+     */
+    public static List<Record> getAllRecords(SQLiteDatabase base) {
+        List<Record> list = new ArrayList<>();
+        String orderBy = COLUMN_SCORE + " desc, " + COLUMN_TIME + ", " + COLUMN_DATE;
+        Cursor cursor = null;
+        try {
+            cursor = base.query(TABLE_RECORDS, null, null, null, null, null, orderBy);
+            if (cursor != null && cursor.moveToFirst()) {
+                int idDateColumn = cursor.getColumnIndex(COLUMN_DATE);
+                int idTimeColumn = cursor.getColumnIndex(COLUMN_TIME);
+                int idScoreColumn = cursor.getColumnIndex(COLUMN_SCORE);
+                do {
+                    String date = cursor.getString(idDateColumn);
+                    String time = cursor.getString(idTimeColumn);
+                    int score = cursor.getInt(idScoreColumn);
+                    Record record = new Record(date, time, score);
+                    list.add(record);
+                } while (cursor.moveToNext());
+            }
+
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+        return list;
     }
 }

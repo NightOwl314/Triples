@@ -9,7 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -85,9 +88,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onBackPressed() {
         Log.d(Constants.LOG_TAG, "GameActivity: onBackPressed()");
-        fs.saveResultGame();
-        Intent intent = new Intent(this, MainMenuActivity.class);
-        startActivity(intent);
+        gotoBack();
     }
 
     @Override
@@ -96,9 +97,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.menuGameBtn:
                 Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка Menu");
-                fs.saveResultGame();
-                intent = new Intent(this, MainMenuActivity.class);
-                startActivity(intent);
+                gotoBack();
                 break;
             case R.id.rulesGameBtn:
                 Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка Правила");
@@ -220,9 +219,11 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         field.clearCoordinates();
 
         if (field.getScore() >= Constants.WIN_SCORE) {
+            Date time = new Date(Calendar.getInstance().getTimeInMillis() - field.getStartTime().getTimeInMillis());
+            SimpleDateFormat formatTime = new SimpleDateFormat(Constants.FORMAT_TIME);
             Intent intent = new Intent(this, WinActivity.class);
             intent.putExtra(Constants.PARAM_SCORE, field.getScoreStr());
-            intent.putExtra(Constants.PARAM_TIME, "01:50:34"); //TODO
+            intent.putExtra(Constants.PARAM_TIME, formatTime.format(time));
             startActivity(intent);
         }
     }
@@ -326,5 +327,12 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         dib42.setBackgroundResource(fs.getBackgroundForDib(field.getDib(4,2).getName()));
 
         score.setText(field.getScoreStr());
+    }
+
+    private void gotoBack() {
+        Date time = new Date(Calendar.getInstance().getTimeInMillis() - field.getStartTime().getTimeInMillis());
+        fs.saveResultGame(this, time, field.getScore());
+        Intent intent = new Intent(this, MainMenuActivity.class);
+        startActivity(intent);
     }
 }

@@ -13,4 +13,6 @@ public class Constants {
     public static final String PARAM_FROM_MENU = "fromMenu";  //признак откуда пришли: из меню или игры
     public static final String PARAM_SCORE = "score";         //набранные очки
     public static final String PARAM_TIME = "time";           //время
+    public static final String FORMAT_DATE = "yyyy.MM.dd";    //формат даты
+    public static final String FORMAT_TIME = "HH:mm:ss";      //формат времени
 }

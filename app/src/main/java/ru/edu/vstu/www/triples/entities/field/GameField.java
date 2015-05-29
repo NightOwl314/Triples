@@ -1,21 +1,24 @@
 package ru.edu.vstu.www.triples.entities.field;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
-import ru.edu.vstu.www.triples.services.Constants;
 import ru.edu.vstu.www.triples.entities.coordinates.Coordinate;
 import ru.edu.vstu.www.triples.entities.dibs.Dib;
+import ru.edu.vstu.www.triples.services.Constants;
 
 public class GameField {
     private Dib[][] array;
     private List<Coordinate> coordinates;  //коордитаты выбранных фишек
     private int score;
+    private Calendar startTime;
 
     public GameField() {
         array = new Dib[Constants.ROW_COUNT][Constants.COLUMN_COUNT];
         coordinates = new ArrayList<>();
         score = 0;
+        startTime = Calendar.getInstance();
     }
 
     /**
@@ -126,5 +129,12 @@ public class GameField {
      */
     public void decScore() {
         score -= Constants.MINUS_SCORE;
+    }
+
+    /**
+     * @return время начала игры
+     */
+    public Calendar getStartTime() {
+        return startTime;
     }
 }

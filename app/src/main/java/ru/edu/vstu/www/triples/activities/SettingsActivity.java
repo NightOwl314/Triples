@@ -18,7 +18,7 @@ import ru.edu.vstu.www.triples.services.Constants;
 public class SettingsActivity extends AppCompatActivity implements View.OnClickListener {
 
     private boolean fromMenu;
-    private DataBaseHelper dbHelper = new DataBaseHelper(this);
+    private DataBaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +36,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         soundOn.setOnClickListener(this);
         soundOff.setOnClickListener(this);
 
+        dbHelper = new DataBaseHelper(this);
         SQLiteDatabase base = dbHelper.getWritableDatabase();
 
         if(DataBaseService.isEasyLevel(base)) {
@@ -59,6 +60,14 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(Constants.LOG_TAG, "SettingsActivity: onDestroy()");
+        if (dbHelper != null) {
+            dbHelper.close();
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -98,7 +107,6 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void gotoBack() {
-        dbHelper.close();
         if (fromMenu) {
             Log.d(Constants.LOG_TAG, "SettingsActivity: возвращаемся в меню меню");
             Intent intent = new Intent(this, MainMenuActivity.class);

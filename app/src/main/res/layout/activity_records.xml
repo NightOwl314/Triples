@@ -12,7 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/recordTitle"
-        android:id="@+id/scroll">
+        android:id="@+id/scroll"
+        android:layout_above="@+id/backFromRecordsBtn"
+        android:layout_marginBottom="20dp">
         <LinearLayout
             android:id="@+id/linLayout"
             android:layout_width="match_parent"

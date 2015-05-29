@@ -1,15 +1,23 @@
 package ru.edu.vstu.www.triples.entities.field;
 
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import ru.edu.vstu.www.triples.R;
-import ru.edu.vstu.www.triples.services.Constants;
+import ru.edu.vstu.www.triples.database.DataBaseHelper;
+import ru.edu.vstu.www.triples.database.DataBaseService;
 import ru.edu.vstu.www.triples.entities.coordinates.Coordinate;
 import ru.edu.vstu.www.triples.entities.dibs.Dib;
 import ru.edu.vstu.www.triples.entities.dibs.DibService;
+import ru.edu.vstu.www.triples.entities.records.Record;
+import ru.edu.vstu.www.triples.services.Constants;
 
 public class GameFieldService {
 
@@ -386,13 +394,21 @@ public class GameFieldService {
         Dib dib2 = arr[i2][j2];
 
         return dibService.isTriple(dib0, dib1, dib2);
-
     }
 
     /**
-     *
+     * Сохранет рекорд в базу
+     * @param context контекст
+     * @param time время игры
+     * @param score счет
      */
-    public void saveResultGame() {
-        //TODO
+    public void saveResultGame(Context context, Date time, int score) {
+        SimpleDateFormat formatDate = new SimpleDateFormat(Constants.FORMAT_DATE);
+        SimpleDateFormat formatTime = new SimpleDateFormat(Constants.FORMAT_TIME);
+        DataBaseHelper dbHelper = new DataBaseHelper(context);
+        SQLiteDatabase base = dbHelper.getWritableDatabase();
+        Record record = new Record(formatDate.format(new Date()), formatTime.format(time) ,score);
+        DataBaseService.saveRecord(base, record);
+        dbHelper.close();
     }
 }
