@@ -1,7 +1,6 @@
 package ru.edu.vstu.www.triples.activities;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -11,14 +10,13 @@ import android.widget.Button;
 import android.widget.RadioButton;
 
 import ru.edu.vstu.www.triples.R;
-import ru.edu.vstu.www.triples.database.DataBaseHelper;
-import ru.edu.vstu.www.triples.database.DataBaseService;
 import ru.edu.vstu.www.triples.services.Constants;
+import ru.edu.vstu.www.triples.services.SettingsService;
 
 public class SettingsActivity extends AppCompatActivity implements View.OnClickListener {
 
     private boolean fromMenu;
-    private DataBaseHelper dbHelper;
+    private SettingsService service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,16 +33,15 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         soundOn.setOnClickListener(this);
         soundOff.setOnClickListener(this);
 
-        dbHelper = new DataBaseHelper(this);
-        SQLiteDatabase base = dbHelper.getWritableDatabase();
+        service = new SettingsService(this);
 
-        if(DataBaseService.isEasyLevel(base)) {
+        if(service.isEasyLevel()) {
             easyLevel.setChecked(true);
         } else {
             involvedLevel.setChecked(true);
         }
 
-        if(DataBaseService.isSoundOn(base)) {
+        if(service.getSoundOn()) {
             soundOn.setChecked(true);
         } else {
             soundOff.setChecked(true);
@@ -73,19 +70,19 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.radioLevelEasy:
                 Log.d(Constants.LOG_TAG, "SettingsActivity: выбран простой уровень");
-                saveLevel(true);
+                service.setLevel(true);
                 break;
             case R.id.radioLevelInvolved:
                 Log.d(Constants.LOG_TAG, "SettingsActivity: выбран сложный уровень");
-                saveLevel(false);
+                service.setLevel(false);
                 break;
             case R.id.radioSoundOn:
                 Log.d(Constants.LOG_TAG, "SettingsActivity: звук включен");
-                saveSound(true);
+                service.setSoundOn(true);
                 break;
             case R.id.radioSoundOff:
                 Log.d(Constants.LOG_TAG, "SettingsActivity: звук выключен");
-                saveSound(false);
+                service.setSoundOn(false);
                 break;
         }
     }
@@ -97,9 +94,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void gotoBack() {
-        if (dbHelper != null) {
-            dbHelper.close();
-        }
+        service.close();
         Intent intent;
         if (fromMenu) {
             Log.d(Constants.LOG_TAG, "SettingsActivity: возвращаемся в меню");
@@ -110,15 +105,5 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         }
         startActivity(intent);
         this.finish();
-    }
-
-    private void saveLevel(boolean isEasy) {
-        SQLiteDatabase base = dbHelper.getWritableDatabase();
-        DataBaseService.saveLevelSettings(base, isEasy);
-    }
-
-    private void saveSound(boolean soundOn) {
-        SQLiteDatabase base = dbHelper.getWritableDatabase();
-        DataBaseService.saveSoundSettings(base, soundOn);
     }
 }

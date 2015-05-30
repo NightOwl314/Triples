@@ -15,4 +15,5 @@ public class Constants {
     public static final String PARAM_TIME = "time";           //время
     public static final String FORMAT_DATE = "yyyy.MM.dd";    //формат даты
     public static final String FORMAT_TIME = "HH:mm:ss";      //формат времени
+    public static final int MAX_STREAMS = 3;                  //количество одновременно проигрываемых потоков
 }

@@ -1,6 +1,8 @@
 package ru.edu.vstu.www.triples.activities;
 
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -30,7 +32,7 @@ import ru.edu.vstu.www.triples.services.SettingsService;
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 
     private GameFieldService fs = new GameFieldService();
-    private SettingsService ss = new SettingsService();
+    private SettingsService ss;
     private Map<String, Button> synonymBtn;
 
     private GameField field;
@@ -51,6 +53,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private Button dib41;
     private Button dib42;
     private TextView score;
+
+    private SoundPool sp;
+    private int sPin;
+    private int sUnpin;
+    private int sRight;
+    private int sWrong;
+    private int sWin;
 
     private void refreshBtn() {
         Map<String, Button> map = new HashMap<>();
@@ -76,9 +85,17 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        ss = new SettingsService(this);
+        ss.loadSettings();
+        sp = new SoundPool(Constants.MAX_STREAMS, AudioManager.STREAM_MUSIC, 0);
         findViewElements();
         field = fs.generateNewGameField();
         fillGameField();
+    }
+
+    private void playSound(int sound) {
+        if (sound > 0)
+            sp.play(sound, 1, 1, 1, 0, 1);
     }
 
     @Override
@@ -177,6 +194,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     private void onClickDib(int iIn, int jIn, Button button) {
         if (field.isSelectDib(iIn, jIn)) {
+            if (ss.getSoundOn()) {
+                playSound(sUnpin);
+            }
             //если данная фишка выбрана, то убираем выделение
             field.delCoordinate(iIn, jIn);
             button.setBackgroundResource(fs.getBackgroundForDib(field.getDib(iIn, jIn).getName()));
@@ -186,15 +206,37 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         button.setBackgroundResource(fs.getBackgroundForDib("s_" + field.getDib(iIn, jIn).getName()));
         field.addCoordinate(iIn, jIn);
         if (field.getCoordinates().size() < Constants.COUNT_DIBS_IN_TRIPLES) {
+            if (ss.getSoundOn()) {
+                playSound(sPin);
+            }
             //если еще не выбраны три карты, то пока ничего проверять не надо
             return;
         }
 
-        boolean right = false;
         //если выбраны три карты
         if (fs.validateTriples(field.getArray(), field.getCoordinates())) {
             //это правильная тройка
-            right = true;
+            field.incScore();
+
+            if (field.getScore() >= Constants.WIN_SCORE) {
+                if (ss.getSoundOn()) {
+                    playSound(sWin);
+                }
+
+                Date time = new Date(Calendar.getInstance().getTimeInMillis() - field.getStartTime().getTimeInMillis());
+                fs.saveResultGame(this, time, field.getScore());
+                SimpleDateFormat formatTime = new SimpleDateFormat(Constants.FORMAT_TIME);
+                Intent intent = new Intent(this, WinActivity.class);
+                intent.putExtra(Constants.PARAM_SCORE, field.getScoreStr());
+                intent.putExtra(Constants.PARAM_TIME, formatTime.format(time));
+                startActivity(intent);
+                this.finish();
+                return;
+            }
+
+            if (ss.getSoundOn()) {
+                playSound(sRight);
+            }
             List<Dib> dibs = new ArrayList<>();
             for (Coordinate coordinate: field.getCoordinates()) {
                 int i = coordinate.getRow();
@@ -202,11 +244,19 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 dibs.add(field.getDib(i, j));
             }
             fs.generateTriples(field.getArray(), field.getCoordinates(), dibs);
-            field.incScore();
-        } else if (ss.isInvolvedLevel()) {
-            field.decScore();
+            drawAgainField(true);
+        } else {
+            if (ss.getSoundOn()) {
+                playSound(sWrong);
+            }
+            if (ss.isInvolvedLevel()) {
+                field.decScore();
+            }
+            drawAgainField(false);
         }
+    }
 
+    private void drawAgainField(boolean needAnim) {
         Animation anim = AnimationUtils.loadAnimation(this, R.anim.scale);
         for (Coordinate coordinate: field.getCoordinates()) {
             Button btn = synonymBtn.get(coordinate.toString());
@@ -217,22 +267,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             int i = coordinate.getRow();
             int j = coordinate.getColumn();
             btn.setBackgroundResource(fs.getBackgroundForDib(field.getDib(i, j).getName()));
-            if (right) {
+            if (needAnim) {
                 btn.startAnimation(anim);
             }
         }
 
         score.setText(field.getScoreStr());
         field.clearCoordinates();
-
-        if (field.getScore() >= Constants.WIN_SCORE) {
-            Date time = new Date(Calendar.getInstance().getTimeInMillis() - field.getStartTime().getTimeInMillis());
-            SimpleDateFormat formatTime = new SimpleDateFormat(Constants.FORMAT_TIME);
-            Intent intent = new Intent(this, WinActivity.class);
-            intent.putExtra(Constants.PARAM_SCORE, field.getScoreStr());
-            intent.putExtra(Constants.PARAM_TIME, formatTime.format(time));
-            startActivity(intent);
-        }
     }
 
     private void findViewElements() {
@@ -277,6 +318,12 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         dib42.setOnClickListener(this);
 
         refreshBtn();
+
+        sPin = sp.load(this, R.raw.pin, 1);
+        sUnpin = sp.load(this, R.raw.unpin, 1);
+        sRight = sp.load(this, R.raw.right, 1);
+        sWrong = sp.load(this, R.raw.wrong, 1);
+        sWin = sp.load(this, R.raw.win, 1);
     }
 
     private void fillGameField() {
