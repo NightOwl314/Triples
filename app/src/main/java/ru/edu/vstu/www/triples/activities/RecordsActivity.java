@@ -31,10 +31,9 @@ public class RecordsActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        colors[0] = Color.parseColor("#98FB98");
-        colors[1] = Color.parseColor("#F0FFFF");
+        colors[0] = Color.parseColor("#F0FFFF");
+        colors[1] = Color.parseColor("#98FB98");
 
-        Log.d(Constants.LOG_TAG, "RecordsActivity: onCreate()");
         setContentView(R.layout.activity_records);
         Button backFromInfoBtn = (Button) findViewById(R.id.backFromRecordsBtn);
         backFromInfoBtn.setOnClickListener(this);
@@ -63,10 +62,8 @@ public class RecordsActivity extends AppCompatActivity implements View.OnClickLi
             item.getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;
             item.setBackgroundColor(colors[i % 2]);
             linearLayout.addView(item);
-
         }
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -88,16 +85,11 @@ public class RecordsActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void gotoBack() {
-        Intent intent = new Intent(this, MainMenuActivity.class);
-        startActivity(intent);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d(Constants.LOG_TAG, "RecordsActivity: onDestroy()");
         if (dbHelper != null) {
             dbHelper.close();
         }
+        Intent intent = new Intent(this, MainMenuActivity.class);
+        startActivity(intent);
+        this.finish();
     }
 }

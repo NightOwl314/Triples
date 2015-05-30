@@ -17,7 +17,6 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(Constants.LOG_TAG, "MainMenuActivity: onCreate()");
         setContentView(R.layout.activity_main_menu);
 
         Log.d(Constants.LOG_TAG, "MainMenuActivity: Находим пункты главного меню");
@@ -41,35 +40,39 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View v) {
-        Log.d(Constants.LOG_TAG, "MainMenuActivity: onClick()");
         Intent intent;
         switch (v.getId()) {
             case R.id.playBtn:
                 Log.d(Constants.LOG_TAG, "MainMenuActivity: Нажата кнопка Играть");
                 intent = new Intent(this, GameActivity.class);
                 startActivity(intent);
+                this.finish();
                 break;
             case R.id.rulesBtn:
                 Log.d(Constants.LOG_TAG, "MainMenuActivity: Нажата кнопка Правила");
                 intent = new Intent(this, RulesActivity.class);
                 intent.putExtra(Constants.PARAM_FROM_MENU, true);
                 startActivity(intent);
+                this.finish();
                 break;
             case R.id.settingsBtn:
                 Log.d(Constants.LOG_TAG, "MainMenuActivity: Нажата кнопка Настройки");
                 intent = new Intent(this, SettingsActivity.class);
                 intent.putExtra(Constants.PARAM_FROM_MENU, true);
                 startActivity(intent);
+                this.finish();
                 break;
             case R.id.recordBtn:
                 Log.d(Constants.LOG_TAG, "MainMenuActivity: Нажата кнопка Рекорды");
                 intent = new Intent(this, RecordsActivity.class);
                 startActivity(intent);
+                this.finish();
                 break;
             case R.id.infoBtn:
                 Log.d(Constants.LOG_TAG, "MainMenuActivity: Нажата кнопка Инфо");
                 intent = new Intent(this, InfoActivity.class);
                 startActivity(intent);
+                this.finish();
                 break;
         }
     }
@@ -79,42 +82,10 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
      */
     @Override
     public void onBackPressed() {
-        android.os.Process.killProcess(android.os.Process.myPid());
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d(Constants.LOG_TAG, "MainMenuActivity: onStart()");
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.d(Constants.LOG_TAG, "MainMenuActivity: onRestart()");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d(Constants.LOG_TAG, "MainMenuActivity: onResume()");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d(Constants.LOG_TAG, "MainMenuActivity: onPause()");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.d(Constants.LOG_TAG, "MainMenuActivity: onStop()");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d(Constants.LOG_TAG, "MainMenuActivity: onDestroy()");
+        Log.d(Constants.LOG_TAG, "MainMenuActivity: onBackPressed()");
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }

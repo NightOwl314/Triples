@@ -23,7 +23,6 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(Constants.LOG_TAG, "SettingsActivity: onCreate()");
         setContentView(R.layout.activity_settings);
         Button back = (Button) findViewById(R.id.backFromSettingsBtn);
         RadioButton easyLevel = (RadioButton) findViewById(R.id.radioLevelEasy);
@@ -57,15 +56,6 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
             Log.d(Constants.LOG_TAG, "SettingsActivity: пришли из меню");
         } else {
             Log.d(Constants.LOG_TAG, "SettingsActivity: пришли из игры");
-        }
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d(Constants.LOG_TAG, "SettingsActivity: onDestroy()");
-        if (dbHelper != null) {
-            dbHelper.close();
         }
     }
 
@@ -107,15 +97,19 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void gotoBack() {
+        if (dbHelper != null) {
+            dbHelper.close();
+        }
+        Intent intent;
         if (fromMenu) {
-            Log.d(Constants.LOG_TAG, "SettingsActivity: возвращаемся в меню меню");
-            Intent intent = new Intent(this, MainMenuActivity.class);
-            startActivity(intent);
+            Log.d(Constants.LOG_TAG, "SettingsActivity: возвращаемся в меню");
+            intent = new Intent(this, MainMenuActivity.class);
         } else {
             Log.d(Constants.LOG_TAG, "SettingsActivity: возвращаемся в игру");
-            Intent intent = new Intent(this, GameActivity.class);
-            startActivity(intent);
+            intent = new Intent(this, GameActivity.class);
         }
+        startActivity(intent);
+        this.finish();
     }
 
     private void saveLevel(boolean isEasy) {

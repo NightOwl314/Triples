@@ -17,7 +17,6 @@ public class WinActivity extends AppCompatActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(Constants.LOG_TAG, "WinActivity: onCreate()");
         setContentView(R.layout.activity_win);
 
         Button btnMenu = (Button) findViewById(R.id.homeFromWinBtn);
@@ -50,11 +49,13 @@ public class WinActivity extends AppCompatActivity implements View.OnClickListen
                 Log.d(Constants.LOG_TAG, "WinActivity: Нажата кнопка Menu");
                 intent = new Intent(this, MainMenuActivity.class);
                 startActivity(intent);
+                this.finish();
                 break;
             case R.id.recordFromWinBtn:
                 Log.d(Constants.LOG_TAG, "WinActivity: Нажата кнопка Рекорды");
                 intent = new Intent(this, RecordsActivity.class);
                 startActivity(intent);
+                this.finish();
                 break;
         }
     }
@@ -64,5 +65,6 @@ public class WinActivity extends AppCompatActivity implements View.OnClickListen
         Log.d(Constants.LOG_TAG, "WinActivity: onBackPressed()");
         Intent intent = new Intent(this, MainMenuActivity.class);
         startActivity(intent);
+        this.finish();
     }
 }

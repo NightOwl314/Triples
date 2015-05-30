@@ -37,7 +37,6 @@ public class RulesActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(Constants.LOG_TAG, "RulesActivity: onCreate()");
         setContentView(R.layout.activity_rules);
         Button back = (Button) findViewById(R.id.backFromRulesBtn);
         back.setOnClickListener(this);
@@ -73,14 +72,15 @@ public class RulesActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void gotoBack() {
+        Intent intent;
         if (fromMenu) {
             Log.d(Constants.LOG_TAG, "RulesActivity: возвращаемся в меню меню");
-            Intent intent = new Intent(this, MainMenuActivity.class);
-            startActivity(intent);
+            intent = new Intent(this, MainMenuActivity.class);
         } else {
             Log.d(Constants.LOG_TAG, "RulesActivity: возвращаемся в игру");
-            Intent intent = new Intent(this, GameActivity.class);
-            startActivity(intent);
+            intent = new Intent(this, GameActivity.class);
         }
+        startActivity(intent);
+        this.finish();
     }
 }

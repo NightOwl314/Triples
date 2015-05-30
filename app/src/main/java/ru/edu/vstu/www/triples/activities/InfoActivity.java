@@ -22,7 +22,6 @@ public class InfoActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(Constants.LOG_TAG, "InfoActivity: onCreate()");
         setContentView(R.layout.activity_info);
         Log.d(Constants.LOG_TAG, "InfoActivity: Находим кнопку и устанавливаем текст");
         ((TextView) findViewById(R.id.infoText)).setText(INFO);
@@ -54,5 +53,6 @@ public class InfoActivity extends AppCompatActivity implements View.OnClickListe
     private void gotoBack() {
         Intent intent = new Intent(this, MainMenuActivity.class);
         startActivity(intent);
+        this.finish();
     }
 }

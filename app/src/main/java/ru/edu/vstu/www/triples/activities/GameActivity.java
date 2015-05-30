@@ -73,7 +73,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(Constants.LOG_TAG, "GameActivity: onCreate()");
         setContentView(R.layout.activity_game);
         findViewElements();
         field = fs.generateNewGameField();
@@ -228,42 +227,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d(Constants.LOG_TAG, "GameActivity: onStart()");
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.d(Constants.LOG_TAG, "GameActivity: onRestart()");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d(Constants.LOG_TAG, "GameActivity: onResume()");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d(Constants.LOG_TAG, "GameActivity: onPause()");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.d(Constants.LOG_TAG, "GameActivity: onStop()");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d(Constants.LOG_TAG, "GameActivity: onDestroy()");
-    }
-
     private void findViewElements() {
         Log.d(Constants.LOG_TAG, "GameActivity: Находим кнопки меню и игрового поля");
         Button menuBtn = (Button) findViewById(R.id.menuGameBtn);
@@ -334,5 +297,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         fs.saveResultGame(this, time, field.getScore());
         Intent intent = new Intent(this, MainMenuActivity.class);
         startActivity(intent);
+        this.finish();
     }
 }
