@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -188,9 +190,11 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
+        boolean right = false;
         //если выбраны три карты
         if (fs.validateTriples(field.getArray(), field.getCoordinates())) {
             //это правильная тройка
+            right = true;
             List<Dib> dibs = new ArrayList<>();
             for (Coordinate coordinate: field.getCoordinates()) {
                 int i = coordinate.getRow();
@@ -203,6 +207,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             field.decScore();
         }
 
+        Animation anim = AnimationUtils.loadAnimation(this, R.anim.scale);
         for (Coordinate coordinate: field.getCoordinates()) {
             Button btn = synonymBtn.get(coordinate.toString());
             if (btn == null) {
@@ -212,6 +217,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             int i = coordinate.getRow();
             int j = coordinate.getColumn();
             btn.setBackgroundResource(fs.getBackgroundForDib(field.getDib(i, j).getName()));
+            if (right) {
+                btn.startAnimation(anim);
+            }
         }
 
         score.setText(field.getScoreStr());
