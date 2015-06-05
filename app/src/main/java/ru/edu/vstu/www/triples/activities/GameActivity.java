@@ -93,7 +93,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         fillGameField();
     }
 
-    private void playSound(int sound) {
+    private void play(int sound) {
         if (sound > 0)
             sp.play(sound, 1, 1, 1, 0, 1);
     }
@@ -195,7 +195,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private void onClickDib(int iIn, int jIn, Button button) {
         if (field.isSelectDib(iIn, jIn)) {
             if (ss.getSoundOn()) {
-                playSound(sUnpin);
+                play(sUnpin);
             }
             //если данная фишка выбрана, то убираем выделение
             field.delCoordinate(iIn, jIn);
@@ -203,13 +203,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
-        button.setBackgroundResource(fs.getBackgroundForDib("s_" + field.getDib(iIn, jIn).getName()));
         field.addCoordinate(iIn, jIn);
         if (field.getCoordinates().size() < Constants.COUNT_DIBS_IN_TRIPLES) {
             if (ss.getSoundOn()) {
-                playSound(sPin);
+                play(sPin);
             }
-            //если еще не выбраны три карты, то пока ничего проверять не надо
+            //если еще не выбраны три карты, то просто выделяем фишку
+            button.setBackgroundResource(fs.getBackgroundForDib("s_" + field.getDib(iIn, jIn).getName()));
             return;
         }
 
@@ -220,7 +220,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
             if (field.getScore() >= Constants.WIN_SCORE) {
                 if (ss.getSoundOn()) {
-                    playSound(sWin);
+                    play(sWin);
                 }
 
                 Date time = new Date(Calendar.getInstance().getTimeInMillis() - field.getStartTime().getTimeInMillis());
@@ -235,7 +235,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             }
 
             if (ss.getSoundOn()) {
-                playSound(sRight);
+                play(sRight);
             }
             List<Dib> dibs = new ArrayList<>();
             for (Coordinate coordinate: field.getCoordinates()) {
@@ -247,7 +247,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             drawAgainField(true);
         } else {
             if (ss.getSoundOn()) {
-                playSound(sWrong);
+                play(sWrong);
             }
             if (ss.isInvolvedLevel()) {
                 field.decScore();
