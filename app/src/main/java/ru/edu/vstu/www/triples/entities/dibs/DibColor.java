@@ -17,4 +17,20 @@ public enum DibColor {
     public String getLabel() {
         return label;
     }
+
+    /**
+     * Значение признака по символьному обозначению
+     * @param label Символьное обозначение признака
+     * @return признак
+     */
+    public static DibColor valueOfLabel (String label) {
+        switch (label) {
+            case "r":
+                return RED;
+            case "b":
+                return BLUE;
+            default:
+                return YELLOW;
+        }
+    }
 }

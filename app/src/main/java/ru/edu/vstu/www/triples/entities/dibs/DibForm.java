@@ -17,4 +17,20 @@ public enum DibForm {
     public String getLabel() {
         return label;
     }
+
+    /**
+     * Значение признака по символьному обозначению
+     * @param label Символьное обозначение признака
+     * @return признак
+     */
+    public static DibForm valueOfLabel (String label) {
+        switch (label) {
+            case "c":
+                return CIRCLE;
+            case "t":
+                return TRIANGLE;
+            default:
+                return RHOMBUS;
+        }
+    }
 }

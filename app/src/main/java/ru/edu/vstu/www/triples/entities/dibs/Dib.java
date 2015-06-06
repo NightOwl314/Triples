@@ -20,6 +20,18 @@ public class Dib {
                        this.filling.getLabel();
     }
 
+    public Dib (String name) {
+        this.name = name;
+        String color = name.substring(0, 1);
+        String number = name.substring(1, 2);
+        String form = name.substring(2, 3);
+        String filling = name.substring(3, 4);
+        this.color = DibColor.valueOfLabel(color);
+        this.number = DibNumber.valueOfLabel(number);
+        this.form = DibForm.valueOfLabel(form);
+        this.filling = DibFilling.valueOfLabel(filling);
+    }
+
     public DibColor getColor() {
         return color;
     }

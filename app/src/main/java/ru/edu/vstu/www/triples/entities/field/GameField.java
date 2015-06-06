@@ -118,6 +118,13 @@ public class GameField {
     }
 
     /**
+     * @param score текущий счет
+     */
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    /**
      * увеличить счет
      */
     public void incScore() {
@@ -136,5 +143,12 @@ public class GameField {
      */
     public Calendar getStartTime() {
         return startTime;
+    }
+
+    /**
+     * @param startTime время начала игры
+     */
+    public void setStartTime(Calendar startTime) {
+        this.startTime = startTime;
     }
 }

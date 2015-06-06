@@ -16,4 +16,22 @@ public class Constants {
     public static final String FORMAT_DATE = "yyyy.MM.dd";    //формат даты
     public static final String FORMAT_TIME = "HH:mm:ss";      //формат времени
     public static final int MAX_STREAMS = 3;                  //количество одновременно проигрываемых потоков
+    public static final String SAVE = "save_game";            //ключи для сохранения игры
+    public static final String SAVE_DIB00 = "dib00";
+    public static final String SAVE_DIB01 = "dib01";
+    public static final String SAVE_DIB02 = "dib02";
+    public static final String SAVE_DIB10 = "dib10";
+    public static final String SAVE_DIB11 = "dib11";
+    public static final String SAVE_DIB12 = "dib12";
+    public static final String SAVE_DIB20 = "dib20";
+    public static final String SAVE_DIB21 = "dib21";
+    public static final String SAVE_DIB22 = "dib22";
+    public static final String SAVE_DIB30 = "dib30";
+    public static final String SAVE_DIB31 = "dib31";
+    public static final String SAVE_DIB32 = "dib32";
+    public static final String SAVE_DIB40 = "dib40";
+    public static final String SAVE_DIB41 = "dib41";
+    public static final String SAVE_DIB42 = "dib42";
+    public static final String SAVE_SCORE = "save_score";
+    public static final String SAVE_TIME = "save_time";
 }

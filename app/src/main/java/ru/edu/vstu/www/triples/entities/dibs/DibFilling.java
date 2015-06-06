@@ -17,4 +17,20 @@ public enum DibFilling {
     public String getLabel() {
         return label;
     }
+
+    /**
+     * Значение признака по символьному обозначению
+     * @param label Символьное обозначение признака
+     * @return признак
+     */
+    public static DibFilling valueOfLabel (String label) {
+        switch (label) {
+            case "f":
+                return FILLED;
+            case "s":
+                return SHADED;
+            default:
+                return EMPTY;
+        }
+    }
 }

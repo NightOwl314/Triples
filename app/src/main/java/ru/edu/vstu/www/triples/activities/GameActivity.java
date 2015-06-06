@@ -1,6 +1,7 @@
 package ru.edu.vstu.www.triples.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
@@ -33,6 +34,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     private GameFieldService fs = new GameFieldService();
     private SettingsService ss;
+    private SharedPreferences sPref;
     private Map<String, Button> synonymBtn;
 
     private GameField field;
@@ -88,9 +90,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         ss = new SettingsService(this);
         ss.loadSettings();
         sp = new SoundPool(Constants.MAX_STREAMS, AudioManager.STREAM_MUSIC, 0);
+        sPref = getSharedPreferences("TriplesPreferences", MODE_PRIVATE);
         findViewElements();
-        field = fs.generateNewGameField();
-        fillGameField();
+        loadGame();
     }
 
     private void play(int sound) {
@@ -119,12 +121,14 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.rulesGameBtn:
                 Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка Правила");
+                saveGame(true);
                 intent = new Intent(this, RulesActivity.class);
                 intent.putExtra(Constants.PARAM_FROM_MENU, false);
                 startActivity(intent);
                 break;
             case R.id.settingsGameBtn:
                 Log.d(Constants.LOG_TAG, "GameActivity: Нажата кнопка Настройки");
+                saveGame(true);
                 intent = new Intent(this, SettingsActivity.class);
                 intent.putExtra(Constants.PARAM_FROM_MENU, false);
                 startActivity(intent);
@@ -328,7 +332,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     private void fillGameField() {
         Log.d(Constants.LOG_TAG, "GameActivity: Заполняем фишки и счет");
-        dib00.setBackgroundResource(fs.getBackgroundForDib(field.getDib(0, 0).getName()));
+        dib00.setBackgroundResource(fs.getBackgroundForDib(field.getDib(0,0).getName()));
         dib01.setBackgroundResource(fs.getBackgroundForDib(field.getDib(0,1).getName()));
         dib02.setBackgroundResource(fs.getBackgroundForDib(field.getDib(0,2).getName()));
         dib10.setBackgroundResource(fs.getBackgroundForDib(field.getDib(1,0).getName()));
@@ -350,8 +354,70 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private void gotoBack() {
         Date time = new Date(Calendar.getInstance().getTimeInMillis() - field.getStartTime().getTimeInMillis());
         fs.saveResultGame(this, time, field.getScore());
+        saveGame(false);
         Intent intent = new Intent(this, MainMenuActivity.class);
         startActivity(intent);
         this.finish();
+    }
+
+    private void loadGame() {
+        boolean save = sPref.getBoolean(Constants.SAVE, false);
+        if (save) {
+            field = new GameField();
+
+            field.setScore(sPref.getInt(Constants.SAVE_SCORE, 0));
+
+            Calendar time = Calendar.getInstance();
+            time.setTimeInMillis(sPref.getLong(Constants.SAVE_TIME, Calendar.getInstance().getTimeInMillis()));
+            field.setStartTime(time);
+
+            field.setDib(0, 0, new Dib(sPref.getString(Constants.SAVE_DIB00, "")));
+            field.setDib(0, 1, new Dib(sPref.getString(Constants.SAVE_DIB01, "")));
+            field.setDib(0, 2, new Dib(sPref.getString(Constants.SAVE_DIB02, "")));
+            field.setDib(1, 0, new Dib(sPref.getString(Constants.SAVE_DIB10, "")));
+            field.setDib(1, 1, new Dib(sPref.getString(Constants.SAVE_DIB11, "")));
+            field.setDib(1, 2, new Dib(sPref.getString(Constants.SAVE_DIB12, "")));
+            field.setDib(2, 0, new Dib(sPref.getString(Constants.SAVE_DIB20, "")));
+            field.setDib(2, 1, new Dib(sPref.getString(Constants.SAVE_DIB21, "")));
+            field.setDib(2, 2, new Dib(sPref.getString(Constants.SAVE_DIB22, "")));
+            field.setDib(3, 0, new Dib(sPref.getString(Constants.SAVE_DIB30, "")));
+            field.setDib(3, 1, new Dib(sPref.getString(Constants.SAVE_DIB31, "")));
+            field.setDib(3, 2, new Dib(sPref.getString(Constants.SAVE_DIB32, "")));
+            field.setDib(4, 0, new Dib(sPref.getString(Constants.SAVE_DIB40, "")));
+            field.setDib(4, 1, new Dib(sPref.getString(Constants.SAVE_DIB41, "")));
+            field.setDib(4, 2, new Dib(sPref.getString(Constants.SAVE_DIB42, "")));
+
+            SharedPreferences.Editor editor = sPref.edit();
+            editor.putBoolean(Constants.SAVE, false);
+            editor.commit();
+        } else {
+            field = fs.generateNewGameField();
+        }
+        fillGameField();
+    }
+
+    private void saveGame(boolean save) {
+        SharedPreferences.Editor editor = sPref.edit();
+        editor.putBoolean(Constants.SAVE, save);
+        if (save) {
+            editor.putString(Constants.SAVE_DIB00, field.getDib(0, 0).getName());
+            editor.putString(Constants.SAVE_DIB01, field.getDib(0, 1).getName());
+            editor.putString(Constants.SAVE_DIB02, field.getDib(0, 2).getName());
+            editor.putString(Constants.SAVE_DIB10, field.getDib(1, 0).getName());
+            editor.putString(Constants.SAVE_DIB11, field.getDib(1, 1).getName());
+            editor.putString(Constants.SAVE_DIB12, field.getDib(1, 2).getName());
+            editor.putString(Constants.SAVE_DIB20, field.getDib(2, 0).getName());
+            editor.putString(Constants.SAVE_DIB21, field.getDib(2, 1).getName());
+            editor.putString(Constants.SAVE_DIB22, field.getDib(2, 2).getName());
+            editor.putString(Constants.SAVE_DIB30, field.getDib(3, 0).getName());
+            editor.putString(Constants.SAVE_DIB31, field.getDib(3, 1).getName());
+            editor.putString(Constants.SAVE_DIB32, field.getDib(3, 2).getName());
+            editor.putString(Constants.SAVE_DIB40, field.getDib(4, 0).getName());
+            editor.putString(Constants.SAVE_DIB41, field.getDib(4, 1).getName());
+            editor.putString(Constants.SAVE_DIB42, field.getDib(4, 2).getName());
+            editor.putInt(Constants.SAVE_SCORE, field.getScore());
+            editor.putLong(Constants.SAVE_TIME, field.getStartTime().getTimeInMillis());
+        }
+        editor.commit();
     }
 }
